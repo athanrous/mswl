@@ -4,6 +4,9 @@ import urllib
 import urllib2
 import argparse
 
+
+            
+        
 from BeautifulSoup import BeautifulSoup as bs
 
 parser = argparse.ArgumentParser(description = "Let's craawl the web guys!")
@@ -26,12 +29,41 @@ _opener = urllib2.build_opener ()
 
 _opener.addheaders = [('User - agent' , user_agent ) ]
 
+
+#
 raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
 
 soup = bs(raw_code)
-
+#
 for link in soup.findAll('a') :
-    if link.has_key('href') :
+    if link.has_key('href') :  
         a = link.get('href')
         print a
+
+global asterisk
+asterisk = ' * '
+
+def Enlances (nivel,asterisko,target_url):
+        for a in link : 
+            print asterisk , a
+            if nivel == 1 :
+                    Enlances(1,asterisko,target_url)
+            if nivel < deep :    
+                    Enlances(nivel+1,asterisko+'*',a)
+        
+       
+    
+            
+           
+             
+                
+            
+            
+
+            
+        
+                
+            
+                
+            
         
