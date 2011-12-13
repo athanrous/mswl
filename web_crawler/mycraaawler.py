@@ -4,9 +4,6 @@ import urllib
 import urllib2
 import argparse
 
-
-            
-        
 from BeautifulSoup import BeautifulSoup as bs
 
 parser = argparse.ArgumentParser(description = "Let's craawl the web guys!")
@@ -31,35 +28,18 @@ _opener.addheaders = [('User - agent' , user_agent ) ]
 
 raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
 
-soup = bs(raw_code)
-todos_enlances = [link ('href')
-                  for link in soup.findAll('a')
-                  if link.has_key('href')] # Aqui hago el "for" y el "if" en la misma manera con las trasparencias
-#
-#raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
-
-
-#
-#for link in soup.findAll('a') :
- #   if link.has_key('href') :  
-  #      a = link.get('href')
-   #     print a
-
-global asterisk
+global asterisk # Pongo global la variable porque se utilizara dentro la function
 asterisk = ' * '
 
 def Enlances (nivel,asterisko,target_url):
-        for a in link : 
+    soup = bs(raw_code)
+    todos_enlances = [link ('href')
+                  for link in soup.findAll('a')
+                  if link.has_key('href')] # Aqui hago el "for" y el "if" en la misma manera con las trasparencias
+
+    for a in todos_enlances : 
             print asterisk , a
             if nivel == 1 :
-                    Enlances(1,asterisko,target_url)
+                    print "Something went wrong,very low level,please retry"
             if nivel < deep :    
-                    Enlances(nivel+1,asterisko+'*',a)
-        
-       
-    
-            
-           
-             
-                    
-        
+                    Enlances(nivel+1,asterisko+'*',a)      
