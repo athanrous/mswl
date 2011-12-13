@@ -28,8 +28,8 @@ _opener.addheaders = [('User - agent' , user_agent ) ]
 
 raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
 
-global asterisk # Pongo global la variable porque se utilizara dentro la function
-asterisk = ' * '
+global asterisko # Pongo global la variable porque se utilizara dentro la function
+asterisko = ' * '
 
 def Enlances (nivel,asterisko,target_url):
     soup = bs(raw_code)
@@ -38,7 +38,7 @@ def Enlances (nivel,asterisko,target_url):
                   if link.has_key('href')] # Aqui hago el "for" y el "if" en la misma manera con las trasparencias
 
     for a in todos_enlances : 
-            print asterisk , a
+            print asterisko , a
             if nivel == 1 :
                     print "Something went wrong,very low level,please retry"
             if nivel < deep :    
