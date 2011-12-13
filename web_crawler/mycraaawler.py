@@ -26,6 +26,7 @@ global asterisko # Pongo global la variable porque se utilizara dentro la functi
 asterisko = ' * '
 
 def Enlances (nivel,asterisko,target_url):
+    raw_code =_opener.open(target_url).read()
     soup = bs(raw_code)
     todos_enlances = [link ('href')
                   for link in soup.findAll('a')
@@ -44,7 +45,7 @@ _opener = urllib2.build_opener ()
 
 _opener.addheaders = [('User - agent' , user_agent ) ]
 
-raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
+# # Toda la informacion de la pagina esta aqui
 
 Enlances(1,asterisko,target_url) # We call the Enlances function with the level 1 because is the default level of the web pages craawled
 
