@@ -46,5 +46,6 @@ _opener.addheaders = [('User - agent' , user_agent ) ]
 
 raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
 
+Enlances(1,asterisko,target_url) # We call the Enlances function with the level 1 because is the default level of the web pages craawled
 
 
