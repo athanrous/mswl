@@ -29,16 +29,21 @@ _opener = urllib2.build_opener ()
 
 _opener.addheaders = [('User - agent' , user_agent ) ]
 
-
-#
 raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
 
 soup = bs(raw_code)
+todos_enlances = [link ('href')
+                  for link in soup.findAll('a')
+                  if link.has_key('href')] # Aqui hago el "for" y el "if" en la misma manera con las trasparencias
 #
-for link in soup.findAll('a') :
-    if link.has_key('href') :  
-        a = link.get('href')
-        print a
+#raw_code =_opener.open(target_url).read() # Toda la informacion de la pagina esta aqui
+
+
+#
+#for link in soup.findAll('a') :
+ #   if link.has_key('href') :  
+  #      a = link.get('href')
+   #     print a
 
 global asterisk
 asterisk = ' * '
@@ -56,14 +61,5 @@ def Enlances (nivel,asterisko,target_url):
             
            
              
-                
-            
-            
-
-            
-        
-                
-            
-                
-            
+                    
         
