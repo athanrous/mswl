@@ -6,8 +6,12 @@ import argparse
 
 from BeautifulSoup import BeautifulSoup as bs
 
-def Enlances (nivel,asterisko,enlance):
-    raw_code =_opener.open(enlance).read()
+global asterisko
+
+asterisko = ' * '
+
+def Enlances (nivel,asterisko,url):
+    raw_code =_opener.open(url).read()
     soup = bs(raw_code)
     todos_enlances = [link ('href')
                   for link in soup.findAll('a')
@@ -34,8 +38,8 @@ deep = args.number_of_levels
 
 
 
-global asterisko # Pongo global la variable porque se utilizara dentro la function
-asterisko = ' * '
+ # Pongo global la variable porque se utilizara dentro la function
+
 
      
 
@@ -45,7 +49,7 @@ _opener = urllib2.build_opener ()
 
 _opener.addheaders = [('User - agent' , user_agent ) ]
 
-# # Toda la informacion de la pagina esta aqui
+
 
 Enlances(1,asterisko,target_url) # We call the Enlances function with the level 1 because is the default level of the web pages craawled
 
