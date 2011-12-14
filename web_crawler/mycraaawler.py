@@ -13,8 +13,10 @@ def Enlances (nivel,asterisko,url):
     todos_enlances = [link ('href')
                   for link in soup.findAll('a')
                   if link.has_key('href')] 
+    except urllib2.URLError :
     if nivel == 1:
         print "Something went wrong,very low level,please retry"
+        return
     for a in todos_enlances : 
             print asterisko , a
             if nivel < deep :    
