@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import urllib
+
 import urllib2
 import argparse
 
