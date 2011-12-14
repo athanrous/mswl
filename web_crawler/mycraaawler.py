@@ -8,6 +8,7 @@ from BeautifulSoup import BeautifulSoup as bs
 
 
 def Enlances (nivel,asterisko,url):
+    try:
     raw_code =_opener.open(url).read()
     soup = bs(raw_code)
     todos_enlances = [link ('href')
