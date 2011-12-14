@@ -32,7 +32,7 @@ target_url = args.url.pop()
 
 deep = args.number_of_levels
 
-#page = urllib2.urlopen(target_url)
+
 
 global asterisko # Pongo global la variable porque se utilizara dentro la function
 asterisko = ' * '
