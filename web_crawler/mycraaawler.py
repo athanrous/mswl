@@ -6,21 +6,17 @@ import argparse
 
 from BeautifulSoup import BeautifulSoup as bs
 
-global asterisko
-
-asterisko = ' * '
 
 def Enlances (nivel,asterisko,url):
     raw_code =_opener.open(url).read()
     soup = bs(raw_code)
     todos_enlances = [link ('href')
                   for link in soup.findAll('a')
-                  if link.has_key('href')] # Aqui hago el "for" y el "if" en la misma manera con las trasparencias
-
+                  if link.has_key('href')] 
+    if nivel == 1:
+        print "Something went wrong,very low level,please retry"
     for a in todos_enlances : 
             print asterisko , a
-            if nivel == 1 :
-                    print "Something went wrong,very low level,please retry"
             if nivel < deep :    
                     Enlances(nivel+1,asterisko+'*',a) 
 
@@ -36,13 +32,6 @@ target_url = args.url.pop()
 
 deep = args.number_of_levels
 
-
-
- # Pongo global la variable porque se utilizara dentro la function
-
-
-     
-
 user_agent = " Mozilla /5.0 ( X11 ; U ; Linux x86_64 ; en -US ) AppleWebKit /534.7 ( KHTML , like Gecko ) Chrome/7.0.517.41 Safari /534.7 "
 
 _opener = urllib2.build_opener ()
@@ -51,6 +40,5 @@ _opener.addheaders = [('User - agent' , user_agent ) ]
 
 
 
-Enlances(1,asterisko,target_url) # We call the Enlances function with the level 1 because is the default level of the web pages craawled
-
+Enlances(1,"*",target_url) 
 
