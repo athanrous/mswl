@@ -8,7 +8,7 @@ import argparse
 from BeautifulSoup import BeautifulSoup as bs
 
 
-def obtainLink(nivel,asterisko,url):
+def obtainLink(level,asterisko,url):
     try:
         user_agent = " Mozilla /5.0 ( X11 ; U ; Linux x86_64 ; en -US ) AppleWebKit /534.7 ( KHTML , like Gecko ) Chrome/7.0.517.41 Safari /534.7 "
 
@@ -20,14 +20,14 @@ def obtainLink(nivel,asterisko,url):
             in soup.findAll('a')
             if link.has_key('href')] 
     except urllib2.URLError :
-        if nivel == 1:
+        if level == 1:
             print "Something went wrong,very low level,please retry"
         return   
     
     for link in todos_enlances : 
         #print link  
-        if nivel < deep :   
-                obtainLink(nivel+1,asterisko+'*',link)  
+        if level < deep :   
+                obtainLink(level+1,asterisko+'*',link)  
                 print "Hello World!"
           
 parser = argparse.ArgumentParser(description = "Let's craawl the web guys!")
