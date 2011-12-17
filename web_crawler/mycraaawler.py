@@ -1,26 +1,28 @@
-#!/usr/bin/python3
+#!/usr/bin/python2.7
 
 
 import urllib2
 import argparse
 
+
 from BeautifulSoup import BeautifulSoup as bs
 
-def Enlances (nivel,asterisko,url): # This function 
+
+def obtainLink(nivel,simbolo,enlance):
     try:
-        raw_code =_opener.open(url).read()
-        soup = bs( raw_code )
-        todos_enlances = [ link ('href') for link
-            in soup.findAll('a')
-            if link.has_key('href')] # In this part of code i assign the variable todos_enlances in order to receive all the url's from the page , as shown in the presentation 
-    except urllib2.URLError : # I add this exception in order to avoid and refuse syntaxis url errors
+        page = urllib2.urlopen(target_url)
+        sopa = bs( page )
+        links = [ link ('href') for link
+            in sopa.findAll('a')
+            if link.has_key('href')]
+    except urllib2.URLError :
         if nivel == 1:
-            print "Something went wrong,very low level,please retry"
-        return    
-    for link in todos_enlances :
-        print todos_enlances
+            print "Something went wrong,please retry"
+        return
+    for link in links :
+        print link
         if nivel < deep :
-            Enlances(nivel+1,asterisko+'*',link)
+            obtainLink(nivel+1,simbolo+'-',link)
            
 parser = argparse.ArgumentParser(description = "Let's craawl the web guys!")
 
@@ -38,8 +40,10 @@ user_agent = " Mozilla /5.0 ( X11 ; U ; Linux x86_64 ; en -US ) AppleWebKit /534
 
 _opener = urllib2.build_opener()
         
-_opener.addheaders = [('User - agent',user_agent ) ] # In the block of code above i add the parser , the args ,user_agent,deep,target_url,  variables as shown in the presantation during the classes so as to parse the arguments and connect the variables with the command line arguments
-
+_opener.addheaders = [('User - agent',user_agent ) ]
         
 
-Enlances(1,"*",target_url) # I call the fucnction Enlances as  a default call of the function
+obtainLink(1,"-",target_url) 
+
+
+
