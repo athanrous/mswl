@@ -20,7 +20,7 @@ def obtainLink(nivel,simbolo,enlance):
             print "Something went wrong,please retry"
         return
     for link in links :
-        print link
+        print simbolo+""+link
         if nivel < deep :
             obtainLink(nivel+1,simbolo+'-',link)
            
