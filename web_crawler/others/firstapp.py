@@ -22,7 +22,7 @@ def main():
     
     print (monomaxos.showPrice())
     print (monomaxos.showDuration())
-    print  (monomaxos.showTitle())
+    print (monomaxos.showTitle())
     
 if __name__ == "__main__": main()
 
