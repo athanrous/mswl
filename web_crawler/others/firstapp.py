@@ -17,7 +17,7 @@ class Movie:
         
 def main():
     
-    # print ("This is my first application") #
+    
     monomaxos = Movie("Gladiator","240 mins","10 Euro")
     
     print (monomaxos.showPrice())
