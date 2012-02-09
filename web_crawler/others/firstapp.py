@@ -18,7 +18,7 @@ class Movie:
 def main():
     
     
-    monomaxos = Movie("Gladiator","240 mins","10 Euro")
+    monomaxos = Movie("Gladiator","230 mins","10 Euro")
     
     print (monomaxos.showPrice())
     print (monomaxos.showDuration())
