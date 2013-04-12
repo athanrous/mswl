@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Exercise_01</string>
+    <string name="action_settings">Settings</string>
+    <string name="exer_title">Welcome to Exercise_01 </string>
+    <string name="exer_foot">Este el primer ejercicio por MSWL_AD</string>
+
+</resources>
