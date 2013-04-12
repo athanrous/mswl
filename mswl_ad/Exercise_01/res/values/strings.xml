@@ -6,7 +6,7 @@
     <string name="exer_title">Welcome to Exercise_01 </string>
     <string name="exer_foot">Este el primer ejercicio por MSWL_AD</string>
    	<string name="logo">Logo </string>
-   	<string name="main_text"> This is the main text of this application</string>
+   	<string name="main_text"> This is the main text</string>
    	<string name="main_desc"> May the source be with you! </string>
    	<string name="locate">Locate</string>
    	<string name="profile">Profile</string>
