@@ -9,12 +9,12 @@
     
     	<TextView
         	android:id="@+id/yellow_back"
-        	android:background="#FFFF00"
         	android:layout_width="fill_parent"
-        	android:layout_height="0dip"
+        	android:layout_height="wrap_content"
         	android:gravity="center_horizontal"
         	android:padding="12dip"
-        	android:text="@string/exer_title" />
+        	android:text="@string/exer_title" 
+        	android:layout_alignParentTop="true" />
     
     <RelativeLayout
     	android:id="@+id/user"
@@ -100,19 +100,48 @@
     	android:width="90dip"/>
 	    
 	</LinearLayout>   
-    
-    
-  <!--    <TextView
-        android:id="@+id/grey_back"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#6E6E6E"
-        android:gravity="center_horizontal"
-        android:text="@string/exer_foot"
-        android:textColor="#ff0000" /> -->
-    
-    
+	
+ 	
+ 	<LinearLayout
+    	android:layout_below="@id/user"
+		android:layout_toRightOf="@+id/button_id"
+    	android:layout_width="fill_parent"
+    	android:layout_height="230dip"
+    	android:orientation="vertical" 
+    	android:background="#8B4513">
 
+    	<ImageView
+        	android:id="@+id/map"
+        	android:layout_width="180dip"
+        	android:layout_height="150dip"
+        	android:contentDescription="@string/locate"
+        	android:layout_gravity="center_horizontal"
+        	android:layout_marginTop="5dip"		
+        	android:src="@drawable/map" />
+        
+    	<Button
+			android:id="@+id/locate"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical|center_horizontal"
+			android:text="@string/locate"  			
+			android:layout_marginTop="10dip"
+			android:width="90dip" />
+    		     	     
+	</LinearLayout>
+	    
+	<TextView
+	    
+		android:id="@+id/dark_font"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/exer_foot"
+	    android:textColor="#ff0000"
+	    android:gravity="center"
+	    android:background="#330066"
+	    android:layout_alignParentBottom="true" />
+    
+    
 </RelativeLayout>
 
 </ScrollView>
