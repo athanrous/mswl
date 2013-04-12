@@ -4,13 +4,12 @@
  
 <RelativeLayout 
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="420dp"
     android:background="#FFFF00" >
     <TextView
         android:id="@+id/yellow_back"
         android:background="#FFFF00"
         android:layout_width="fill_parent"
-        
         android:layout_height="0dip"
         android:gravity="center_horizontal"
         android:padding="12dip"
@@ -22,9 +21,42 @@
     	android:background="#CC0000"
     	android:layout_height="90dip"
     	android:layout_marginTop="40dip"
-    	android:padding="20dip"
+    	android:padding="6dip"
     	
     	 >
+    	 
+        
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="6dip"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/logo" />
+    
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:text="@string/main_text"       
+        android:layout_toRightOf="@id/logo_image"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true" 
+        android:gravity="center_horizontal" />
+    
+   <TextView  
+        android:layout_below="@id/user_name"
+        android:layout_width="fill_parent"
+        android:text="@string/main_desc"
+        android:lines="3"
+        android:layout_height="40dip"
+        android:layout_marginTop="6dip"                 
+        android:layout_toRightOf="@id/logo_image"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+         />
     
     
     
