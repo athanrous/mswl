@@ -1,10 +1,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
  android:layout_width="fill_parent"
- android:layout_height="fill_parent">
+ android:layout_height="wrap_content">
  
 <RelativeLayout 
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="#FFFF00" >
     <TextView
         android:id="@+id/yellow_back"
         android:background="#FFFF00"
@@ -15,17 +16,30 @@
         android:padding="12dip"
         android:text="@string/exer_title" />
     
-    <TextView
+    <RelativeLayout
+    	android:id="@+id/user"
+    	android:layout_width="fill_parent"
+    	android:background="#CC0000"
+    	android:layout_height="90dip"
+    	android:layout_marginTop="40dip"
+    	android:padding="20dip"
+    	
+    	 >
+    
+    
+    
+    
+  <!--    <TextView
         android:id="@+id/grey_back"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#6E6E6E"
         android:gravity="center_horizontal"
         android:text="@string/exer_foot"
-        android:textColor="#ff0000" />
+        android:textColor="#ff0000" /> -->
     
     
-
+</RelativeLayout>
 </RelativeLayout>
 
 </ScrollView>
