@@ -8,4 +8,7 @@
    	<string name="logo">Logo </string>
    	<string name="main_text"> This is the main text of this application</string>
    	<string name="main_desc"> May the source be with you! </string>
+   	<string name="profile">Profile</string>
+   	<string name="about"> About </string>
+   	<string name="refresh"> Refresh</string>
 </resources>

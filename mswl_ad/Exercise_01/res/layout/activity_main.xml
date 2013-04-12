@@ -6,14 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="420dp"
     android:background="#FFFF00" >
-    <TextView
-        android:id="@+id/yellow_back"
-        android:background="#FFFF00"
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:gravity="center_horizontal"
-        android:padding="12dip"
-        android:text="@string/exer_title" />
+    
+    	<TextView
+        	android:id="@+id/yellow_back"
+        	android:background="#FFFF00"
+        	android:layout_width="fill_parent"
+        	android:layout_height="0dip"
+        	android:gravity="center_horizontal"
+        	android:padding="12dip"
+        	android:text="@string/exer_title" />
     
     <RelativeLayout
     	android:id="@+id/user"
@@ -21,9 +22,7 @@
     	android:background="#CC0000"
     	android:layout_height="90dip"
     	android:layout_marginTop="40dip"
-    	android:padding="6dip"
-    	
-    	 >
+    	android:padding="6dip">
     	 
         
     <ImageView
@@ -57,8 +56,50 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
          />
+   
+    </RelativeLayout>
     
     
+ 	<LinearLayout
+ 	    
+    	android:id="@+id/button_id"
+    	android:layout_below="@id/user"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical" 
+    	android:background="#00fff7"
+    	android:padding="6dip" >
+
+	<Button
+    	android:id="@+id/profile_id"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"    	            
+    	android:text="@string/profile"
+    	android:layout_gravity="center_vertical|center_horizontal"
+    	android:layout_marginTop="10dip"    	             
+    	android:width="90dip"/>
+
+	<Button
+	    
+    	android:id="@+id/about_id"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"    	            
+    	android:text="@string/about"
+    	android:layout_gravity="center_vertical|center_horizontal"
+    	android:layout_marginTop="10dip" 
+    	android:width="90dip"/>
+
+	<Button
+	    
+    	android:id="@+id/refresh_id"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity="center_vertical|center_horizontal"
+    	android:text="@string/refresh"  			
+    	android:layout_marginTop="10dip"		
+    	android:width="90dip"/>
+	    
+	</LinearLayout>   
     
     
   <!--    <TextView
@@ -71,7 +112,7 @@
         android:textColor="#ff0000" /> -->
     
     
-</RelativeLayout>
+
 </RelativeLayout>
 
 </ScrollView>
