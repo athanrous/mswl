@@ -67,7 +67,7 @@
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:orientation="vertical" 
-    	android:background="#00fff7"
+    	android:background="#9966FF"
     	android:padding="6dip" >
 
 	<Button
