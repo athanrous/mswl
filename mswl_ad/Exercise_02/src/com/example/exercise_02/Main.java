@@ -119,7 +119,7 @@ public class Main extends Activity {
 
 	            if (requestCode == FROM_ACTIVITY_2) {
 
-	                Integer value = data.getIntExtra(this.strParam, -1);
+	                Integer value = data.getIntExtra(this.strParam, 20);
 
 	                Toast.makeText(this,
 	                        "From Activity 02:" + String.valueOf(value),
@@ -127,7 +127,7 @@ public class Main extends Activity {
 
 	            } else if (requestCode == FROM_ACTIVITY_3) {
 
-	                Integer value = data.getIntExtra(this.strParam, -1);
+	                Integer value = data.getIntExtra(this.strParam, 30);
 
 	                Toast.makeText(this,
 	                        "From Activity 03:" + String.valueOf(value),
