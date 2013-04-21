@@ -14,7 +14,7 @@ public class Activity_03 extends Activity {
 		setContentView(R.layout.activity_activities);
 		
 		TextView txView = (TextView) this
-                .findViewById(R.id.textViewActividades);
+                .findViewById(R.id.textActivities);
 
 		Intent i = getIntent();
         

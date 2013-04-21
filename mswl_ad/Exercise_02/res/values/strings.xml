@@ -8,6 +8,7 @@
     <string name="title_activity_activity_01">Activity_01</string>
     <string name="title_activity_activity_02">Activity_02</string>
     <string name="title_activity_activity_03">Activity_03</string>
+    <string name="textActivities"> Go Back now!</string>
     <string name="bt01">Button 01</string>
     <string name="bt02">Button 02</string>
     <string name="bt03">Butttom 03</string>
