@@ -40,7 +40,7 @@ public class Activity_03 extends Activity {
 		
 		Intent backIntent = new Intent();
 		
-		backIntent.putExtra(Main.strParam, 30); 
+		backIntent.putExtra("strParam", 30); 
 		
 		setResult(RESULT_OK, backIntent);
 		
