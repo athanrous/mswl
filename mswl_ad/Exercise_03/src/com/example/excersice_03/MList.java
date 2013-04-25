@@ -10,7 +10,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -226,10 +226,7 @@ public class MList extends ListActivity {
 						
 					return view;
 					
-					 //} else {
-						
-					//	System.out.println("Ton boulo");
-					
+				
 					
 					
 						
