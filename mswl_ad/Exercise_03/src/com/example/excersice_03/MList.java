@@ -2,12 +2,13 @@ package com.example.excersice_03;
 
 import java.util.ArrayList;
 
-import com.example.exercise_03.R;
-import com.example.exercise_03.MList.MyAdapter;
-import com.example.exercise_03.MList.Node;
+//import com.example.exercise_03.R;
+//import com.example.exercise_03.MList.MyAdapter;
+//import com.example.exercise_03.MList.Node;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -118,7 +119,126 @@ public class MList extends ListActivity {
 		            
 
 		    }
-	
+		    
+			public static class MyAdapter extends BaseAdapter 
+			{
+		        private int final_size;
+				
+				private Context mContext;
+
+				
+				
+				public MyAdapter(Context context)
+				{
+					
+					mContext = context;
+				}
+
+				@Override
+				public int getCount() {
+					
+					final_size = mArray.size() + (mArray.size() / 2) + (mArray.size() % 2);
+					
+					return final_size;
+				}
+
+				@Override
+				public Object getItem(int position) {
+					return mArray.get(position);
+				}
+
+				@Override
+				public long getItemId(int position) {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+
+				@Override
+				public View getView(int position, View convertView, ViewGroup parent) {
+					
+					View view;
+					
+					int pubad;
+					//AdvanceList.this.getSystemService(name);
+					
+					LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				//	view = inflater.inflate(R.layout.mainlist_01, null);
+					
+					pubad = (position + 1) % 3; //Set advertisment position variable
+					// By default widgets
+					
+					//boolean pubad = ((position + 1) % 3 == 0);
+				
+					
+					
+						
+					
+					if (pubad==0){
+						
+						view = inflater.inflate(R.layout.publicity, null); 	
+						
+						if (view!=null) {
+							
+						TextView titleTextView = (TextView) view .findViewById(R.id.pubTexto);
+						titleTextView.setText(R.string.pub_message);
+						titleTextView.setBackgroundColor(Color.GREEN);
+						} else {
+							
+							System.out.println("Ton boulo h diafimish");
+							
+						}
+						
+						
+						
+					} else {
+						
+						position = position - ((position + 1) / 3);
+						view = inflater.inflate(R.layout.mainlist_01, null);
+						
+						if (view!=null || position!=0) {					
+						
+						TextView tvTitle = (TextView) view.findViewById(R.id.title);
+						
+						tvTitle.setText(mArray.get(position).mTitle);
+						
+						TextView tvDescription = (TextView) view.findViewById(R.id.description);
+						
+						tvDescription.setText(mArray.get(position).mDescription);
+						
+						ImageView img = (ImageView) view.findViewById(R.id.image);
+						
+						img.setImageDrawable(mContext.getResources().getDrawable(mArray.get(position).mImageResource));
+						
+						} else {
+							
+							//Toast.makeText(this, String.valueOf(position) + " - " + testValues[position], Toast.LENGTH_SHORT).show();	
+							
+							
+							System.out.println("Ton boulota mynhmamata"); // Na kanw ena toast edw!
+							
+						}
+						
+						
+						
+						
+					}
+						
+						
+					return view;
+					
+					 //} else {
+						
+					//	System.out.println("Ton boulo");
+					
+					
+					
+						
+					}
+					
+			
+			//	}
+
+			}
 	
 
 	
