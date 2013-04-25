@@ -5,7 +5,7 @@ echo $mls # Print all the ml's
 for ml in $mls
   do
   
-  mlstats --­­db­user root --­­db­password root --­­db­name test_ml --­­db-­admin-­user root --­­db-­admin-­password root ml
-  
+  mlstats --db-user root --db-password root --db-name test_ml_0 --db-admin-user root --db-admin-password root  $ml
+
   done
  

@@ -1,8 +1,7 @@
- #!/bin/bash
+#!/bin/bash
 
-nano testing #Add the repositories in this file
-gits=`cat testing`
-cd /path to cloned repositories/
+gits=`cat repositories`
+cd /repos/
 dirs=`ls`
 echo $dirs
 for dir in $dirs
