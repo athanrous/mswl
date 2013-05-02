@@ -1,7 +1,7 @@
 #!/bin/bash
 
-gits=`cat repositories`
-cd /repos/
+#gits=`cat repositories`
+cd /path to cloned repositories/
 dirs=`ls`
 echo $dirs
 for dir in $dirs
