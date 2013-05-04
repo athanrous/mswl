@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import java.util.ArrayList;
+
+
+
 import android.app.ListActivity;
 import android.content.Context;
 import android.graphics.Color;
@@ -40,23 +43,28 @@ public class MapListActiviy extends ListActivity {
 
             mArray.clear();
 
-            Node mynode = new Node();
-            mynode.mTitle = this.getResources().getString(R.string.title1);
-            mynode.mDescription = this.getResources().getString(R.string.description1);
-            mynode.mImageResource = R.drawable.image_01;
+            MapNode mynode = new MapNode();
+            mynode.MapTitle = this.getResources().getString(R.string.title1);
+            mynode.MapDescription = this.getResources().getString(R.string.description1);
+            mynode.MapImageResource = R.drawable.image_01; 
+            mynode.MapLatitude = 41.140932;
+            mynode.MapLongititude = 24.889673;
             mArray.add(mynode);
 
-            Node mynode2 = new Node();
-            mynode2.mTitle = this.getResources().getString(R.string.title2);
-            mynode2.mDescription = this.getResources().getString(R.string.description2);	
-            mynode2.mImageResource = R.drawable.image_02;
+            MapNode mynode2 = new MapNode();
+            mynode2.MapTitle = this.getResources().getString(R.string.title2);
+            mynode2.MapDescription = this.getResources().getString(R.string.description2);	
+            mynode2.MapImageResource = R.drawable.image_02;
+            mynode.MapLatitude = 41.142807;
+            mynode.MapLongititude = 24.890789;
             mArray.add(mynode2);
 
-            Node mynode3 = new Node();
-            mynode3.mTitle = this.getResources().getString(R.string.title3);
-            mynode3.mDescription = this.getResources().getString(R.string.description3);
-            mynode3.mImageResource = R.drawable.image_03;
-
+            MapNode mynode3 = new MapNode();
+            mynode3.MapTitle = this.getResources().getString(R.string.title3);
+            mynode3.MapDescription = this.getResources().getString(R.string.description3);
+            mynode3.MapImageResource = R.drawable.image_03; 
+            mynode.MapLatitude = 41.144374;
+            mynode.MapLongititude = 24.886883;
             mArray.add(mynode3);
             
         
@@ -129,15 +137,15 @@ public class MapListActiviy extends ListActivity {
 				
 				TextView tvTitle = (TextView) view.findViewById(R.id.title);
 				
-				tvTitle.setText(mArray.get(position).mTitle);
+				tvTitle.setText(mArray.get(position).MapTitle);
 				
 				TextView tvDescription = (TextView) view.findViewById(R.id.description);
 				
-				tvDescription.setText(mArray.get(position).mDescription);
+				tvDescription.setText(mArray.get(position).MapDescription);
 				
 				ImageView img = (ImageView) view.findViewById(R.id.image);
 				
-				img.setImageDrawable(mContext.getResources().getDrawable(mArray.get(position).mImageResource));
+				img.setImageDrawable(mContext.getResources().getDrawable(mArray.get(position).MapImageResource));
 				
 				} else {
 						
