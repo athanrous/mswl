@@ -31,6 +31,10 @@
             android:name="com.example.exercise_04.ListActiviy"
             android:label="@string/title_activity_list_activiy" >
         </activity>
+        <activity
+            android:name="com.example.exercise_04.MapActivity"
+            android:label="@string/title_activity_map" >
+        </activity>
     </application>
 
 </manifest>

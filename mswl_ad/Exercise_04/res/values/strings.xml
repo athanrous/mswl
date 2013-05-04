@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="map_key">0Tp7WsIDiyqoDmSF9LMprvDzte-hj_A6r-qxbow</string>
     <string name="title_activity_list_activiy">ListActiviy</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>
