@@ -6,6 +6,6 @@ public class MapNode {
     public String MapDescription;
     public Integer MapImageResource;
     public double MapLatitude;
-    public double MapLongititude;
+    public double MapLongititudeb;
 
 }

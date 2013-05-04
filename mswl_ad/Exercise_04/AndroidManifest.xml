@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.exercise_04.ListActiviy"
+            android:name="com.example.exercise_04.MapListActiviy"
             android:label="@string/title_activity_list_activiy" >
         </activity>
         <activity
