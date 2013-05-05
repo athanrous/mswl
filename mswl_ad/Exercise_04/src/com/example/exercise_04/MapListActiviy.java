@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import java.util.ArrayList;
-
-
-
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.exercise_04.MapNode;
+
 
 public class MapListActiviy extends ListActivity {
 	
@@ -37,6 +36,7 @@ public class MapListActiviy extends ListActivity {
         setListAdapter(mAdapter);	                
 	    	   
 	}
+	
 			
 	private void setData ()
     {
@@ -70,6 +70,42 @@ public class MapListActiviy extends ListActivity {
         
             mArray.addAll(mArray);  
     }
+	
+	
+	protected void onItemClick(ListView lv, View v, int pos, long id){
+		
+		
+		boolean isadvertise = ((pos + 1) % 3 == 0);
+		
+		if (isadvertise){
+			
+			Toast.makeText(this,this.getResources().getString(R.string.pub_message),
+                    Toast.LENGTH_SHORT).show();
+			
+			
+		}else{
+			
+			//We create a new intent so as to add elemenents and we define the position of the intent
+			pos = pos - ((pos + 1) / 3);
+			
+			MapNode sNode = mArray.get(pos);
+			
+			Intent MapIntent = new Intent(MapListActiviy.this,MapActivity.class);
+			MapIntent.putExtra("title", sNode.MapTitle);
+			MapIntent.putExtra("description", sNode.MapDescription);
+			MapIntent.putExtra("image",sNode.MapImageResource);
+			MapIntent.putExtra("Latitude", sNode.MapLatitude);
+			MapIntent.putExtra("Longitude", sNode.MapLongititude);
+			
+			//After creating the new Intent we initialize the activity
+			
+			startActivity(MapIntent);
+			
+	
+			
+			
+		}
+	}
 	
 	public static class MyAdapter extends BaseAdapter 
 	{
