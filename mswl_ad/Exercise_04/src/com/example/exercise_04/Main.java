@@ -1,132 +1,211 @@
 package com.example.exercise_04;
 
+import java.util.List;
+
 import android.os.Bundle;
-import android.app.Activity;
+//import android.app.Activity;
 import android.view.Menu;
-import android.content.Context;
-import android.location.Location;
+//import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+//import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
+//import android.os.Bundle;
+//import android.util.Log;
+//import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
 
-//import com.example.mymaps.R;
-//import com.example.mymaps.Main.MyLocationListener;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
+import com.example.exercise_04.MapNode;
 
 
 public class Main extends MapActivity {
 	
-	private MapView mapview=null;
+	private MapView mView=null;
 	
-	private MapController mapControl=null;
+	private MapController mControl=null;
+	
+	private MapNode sMap;
+	
+	private GeoPoint sPoint;
+	
+	private TextView tViewLoc;
 	
 	
 	LocationManager mLocationManager;
 	LocationListener mLocationListener;
 	
-	private Location mLoc = null;
+	//private Location mLoc = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		mapview = (MapView) findViewById(R.id.myMapView);
+		tViewLoc = (TextView) findViewById(R.id.tvlocation);
 		
-		mapview.setBuiltInZoomControls(true);
+		mView = (MapView) findViewById(R.id.myMapView);
 		
-		mapview.setClickable(true);
+		mView.setBuiltInZoomControls(true);
 		
-		mapControl = mapview.getController();
+		mView.setClickable(true);
 		
-		GeoPoint geoPoint = new GeoPoint(
+		mControl = mView.getController();
+		
+		initValue();
+		
+		refreshMap();
+		
+	//	GeoPoint geoPoint = new GeoPoint(
 				
-				(int) (41.136343 * 1000000),
+	//			(int) (41.136343 * 1000000),
 				
-				(int) (24.891948* 1000000));
+	//			(int) (24.891948* 1000000));
 		
-		mapControl.setZoom(18);
+	//	mControl.setZoom(18);
 		
-		mapControl.animateTo(geoPoint);
+	//	mControl.animateTo(geoPoint);
 		
-		setLocationListener();
+	//	setLocationListener();
 	}
+	
+	 private void initValue() {
+		 
+		 Intent valueIntent = getIntent();
+		 
+		 if (valueIntent != null){
+			 
+			 double SLat = valueIntent.getDoubleExtra("Latitude", 0);
+			 
+			 double SLon = valueIntent.getDoubleExtra("Longitude", 0);
+			 
+			 sMap = new MapNode();
+			 
+			 sMap.MapLongititude = SLon;
+					 
+			 sMap.MapLatitude = SLat;
+			 
+			 sMap.MapTitle = valueIntent.getStringExtra("Title");
+					 
+			 sMap.MapDescription =  valueIntent.getStringExtra("Description");
+			 
+			 sMap.MapImageResource = valueIntent.getIntExtra("Image", 0);			 
+			 
+		 }
+		 
+	 }
+	 
+	 
 	
 	private void refreshMap (){
+		
+		if (sMap == null) {
+            Toast.makeText(getBaseContext(), "Location not available!",
+                    Toast.LENGTH_LONG).show();
 
+            return;
+        }
+		
+		 	sPoint = new GeoPoint((int) (sMap.MapLatitude * 1000000),
+	                (int) (sMap.MapLongititude * 1000000));
 
+	        mControl.setZoom(18);
+	        mControl.animateTo(sPoint);
 
-		GeoPoint geoPoint = new GeoPoint(
+	        MapOverlay sMapOver = new MapOverlay();
 
-				(int) (mLoc.getLatitude() * 1000000),
+	        Drawable drawable = getResources().getDrawable(sMap.MapImageResource);
+	        drawable.setBounds(0, 0, 50, 50);
 
-				(int) (mLoc.getLongitude()* 1000000));
+	        sMapOver.setDrawable(drawable);
+	        sMapOver.setGeoPoint(sPoint);
+	        sMapOver.setText(sMap.MapTitle);
 
-		mapControl.setZoom(18);
+	        final List<Overlay> overlays = mView.getOverlays();
+	        overlays.clear();
 
-		mapControl.animateTo(geoPoint);
+	        overlays.add(sMapOver);
+
+	        mView.setBuiltInZoomControls(true);
+
+	        mView.setClickable(true);
+
+	        tViewLoc.setText("Your Location is: \n"
+	                + String.valueOf(sPoint.getLatitudeE6()) + " , "
+	                + String.valueOf(sPoint.getLongitudeE6()));
+
+		//GeoPoint geoPoint = new GeoPoint(
+
+		//		(int) (mLoc.getLatitude() * 1000000),
+
+		//		(int) (mLoc.getLongitude()* 1000000));
+
+		// mControl.setZoom(18);
+
+		// mControl.animateTo(geoPoint);
 
 
 
 	}
 	
-	@Override
-	protected void onDestroy() {
+	//@Override
+	//protected void onDestroy() {
 		// TODO Auto-generated method stub
 		
-		mLocationManager.removeUpdates(mLocationListener);
-		super.onDestroy();
-	}
+	//	mLocationManager.removeUpdates(mLocationListener);
+	//	super.onDestroy();
+	//}
 	
-	private void setLocationListener()
-	{
+	//private void setLocationListener()
+	//{
 		
 
-		mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		mLocationListener = new MyLocationListener();
-		mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-				5000, 15, mLocationListener);
+	//	mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+	//	mLocationListener = new MyLocationListener();
+	//	mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+	//			5000, 15, mLocationListener);
 
-	}
+	//}
 	
-	public class MyLocationListener implements LocationListener {
+	//public class MyLocationListener implements LocationListener {
 
-		@Override
-		public void onLocationChanged(Location location) {
+	//	@Override
+	//	public void onLocationChanged(Location location) {
 			// TODO Auto-generated method stub
 			
-			mLoc = location;
-			Log.d("Location" , String.valueOf(mLoc.getLatitude()) + " " + String.valueOf(mLoc.getLongitude()));
+	//		mLoc = location;
+	//		Log.d("Location" , String.valueOf(mLoc.getLatitude()) + " " + String.valueOf(mLoc.getLongitude()));
 			
-			refreshMap();
+	//		refreshMap();
 
-		}
+	//	}
 
-		@Override
-		public void onProviderDisabled(String provider) {
+	//	@Override
+	//	public void onProviderDisabled(String provider) {
 			// TODO Auto-generated method stub
 
-		}
+	//	}
 
-		@Override
-		public void onProviderEnabled(String provider) {
+//		@Override
+	//	public void onProviderEnabled(String provider) {
 			// TODO Auto-generated method stub
 
-		}
+	//	}
 
-		@Override
-		public void onStatusChanged(String provider, int status, Bundle extras) {
+	//	@Override
+	//	public void onStatusChanged(String provider, int status, Bundle extras) {
 			// TODO Auto-generated method stub
 
-		}
+	//	}
 
 
-	}
+	// }
 	@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
