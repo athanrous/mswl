@@ -22,7 +22,7 @@
 
 #!/bin/bash
 
-python db_cvsanaly.py
+#python db_cvsanaly.py
 gits=`cat repositories`
 mkdir repos
 cd repos
@@ -36,5 +36,5 @@ echo $dirs
 for dir in $dirs 
   
   do  
-  cvsanaly2 --db-user root --db-password root --db-database db_01 $dir
+  cvsanaly2 --db-user root --db-password root --db-database Tesis $dir
   done
