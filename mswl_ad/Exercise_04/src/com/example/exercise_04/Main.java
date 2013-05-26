@@ -40,8 +40,6 @@ public class Main extends MapActivity {
 	
 	LocationManager mLocationManager;
 	LocationListener mLocationListener;
-	
-	//private Location mLoc = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,20 +59,8 @@ public class Main extends MapActivity {
 		initValue();
 		
 		refreshMap();
-		
-	//	GeoPoint geoPoint = new GeoPoint(
-				
-	//			(int) (41.136343 * 1000000),
-				
-	//			(int) (24.891948* 1000000));
-		
-	//	mControl.setZoom(18);
-		
-	//	mControl.animateTo(geoPoint);
-		
-	//	setLocationListener();
 	}
-	
+			
 	 private void initValue() {
 		 
 		 Intent valueIntent = getIntent();
@@ -100,9 +86,7 @@ public class Main extends MapActivity {
 		 }
 		 
 	 }
-	 
-	 
-	
+	 	
 	private void refreshMap (){
 		
 		if (sMap == null) {
@@ -140,72 +124,7 @@ public class Main extends MapActivity {
 	                + String.valueOf(sPoint.getLatitudeE6()) + " , "
 	                + String.valueOf(sPoint.getLongitudeE6()));
 
-		//GeoPoint geoPoint = new GeoPoint(
-
-		//		(int) (mLoc.getLatitude() * 1000000),
-
-		//		(int) (mLoc.getLongitude()* 1000000));
-
-		// mControl.setZoom(18);
-
-		// mControl.animateTo(geoPoint);
-
-
-
-	}
-	
-	//@Override
-	//protected void onDestroy() {
-		// TODO Auto-generated method stub
-		
-	//	mLocationManager.removeUpdates(mLocationListener);
-	//	super.onDestroy();
-	//}
-	
-	//private void setLocationListener()
-	//{
-		
-
-	//	mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-	//	mLocationListener = new MyLocationListener();
-	//	mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-	//			5000, 15, mLocationListener);
-
-	//}
-	
-	//public class MyLocationListener implements LocationListener {
-
-	//	@Override
-	//	public void onLocationChanged(Location location) {
-			// TODO Auto-generated method stub
-			
-	//		mLoc = location;
-	//		Log.d("Location" , String.valueOf(mLoc.getLatitude()) + " " + String.valueOf(mLoc.getLongitude()));
-			
-	//		refreshMap();
-
-	//	}
-
-	//	@Override
-	//	public void onProviderDisabled(String provider) {
-			// TODO Auto-generated method stub
-
-	//	}
-
-//		@Override
-	//	public void onProviderEnabled(String provider) {
-			// TODO Auto-generated method stub
-
-	//	}
-
-	//	@Override
-	//	public void onStatusChanged(String provider, int status, Bundle extras) {
-			// TODO Auto-generated method stub
-
-	//	}
-
-
-	// }
+	}	
 	@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
