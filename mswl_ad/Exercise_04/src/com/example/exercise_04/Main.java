@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.maps.GeoPoint;
@@ -15,6 +13,7 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.example.exercise_04.MapNode;
+import com.example.exercise_04.MapOverlay;
 
 
 public class Main extends MapActivity {
@@ -28,9 +27,6 @@ public class Main extends MapActivity {
 	private GeoPoint sPoint;
 	
 	private TextView tViewLoc;
-		
-	LocationManager mLocationManager;
-	LocationListener mLocationListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +54,7 @@ public class Main extends MapActivity {
 		 
 		 if (valueIntent != null){
 			 
-			 sMap = valueIntent.getParcelableExtra("node");
+			 sMap = valueIntent.getParcelableExtra("MapNode");
 	 
 			 
 		 }
@@ -108,8 +104,6 @@ public class Main extends MapActivity {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

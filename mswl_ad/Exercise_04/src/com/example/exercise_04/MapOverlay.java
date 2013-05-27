@@ -12,15 +12,15 @@ import com.google.android.maps.Projection;
 public class MapOverlay extends Overlay {
 
 	private Drawable mMarker;
-	private int mMarkerXOffset;
-	private int mMarkerYOffset;
+	private int mMarkerX;
+	private int mMarkerY;
 	private String text;
 
-	private GeoPoint mGeoPoint;
+	private GeoPoint mGeo;
 
 	public void setGeoPoint (GeoPoint geoPoint)
 	{
-	mGeoPoint = geoPoint;	
+	mGeo = geoPoint;	
 	}
 	
 	//We created this method in order to set text in a generic way
@@ -46,8 +46,8 @@ public class MapOverlay extends Overlay {
 	        	 final int intrinsicHeight = mMarker.getIntrinsicHeight();
 	        	 mMarker.setBounds(0, 0, intrinsicWidth, intrinsicHeight);
 
-	        	 mMarkerXOffset = -(intrinsicWidth / 2);
-	        	 mMarkerYOffset = -(intrinsicHeight / 2);
+	        	 mMarkerX = -(intrinsicWidth / 2);
+	        	 mMarkerY = -(intrinsicHeight / 2);
 
 	        	 Paint paint = new Paint();
 	        	 paint.setARGB(250,0,0,0);
@@ -56,11 +56,11 @@ public class MapOverlay extends Overlay {
 
 	             Point point2 = new Point();
 	             Projection p = mapView.getProjection();
-	             p.toPixels(mGeoPoint, point2);
+	             p.toPixels(mGeo, point2);
 	     
 	             canvas.drawText(text, point2.x - intrinsicWidth , point2.y + intrinsicHeight, paint);
 	             super.draw(canvas, mapView, shadow);
-	             drawAt(canvas, mMarker, point2.x + mMarkerXOffset, point2.y + mMarkerYOffset, shadow);
+	             drawAt(canvas, mMarker, point2.x + mMarkerX, point2.y + mMarkerY, shadow);
 
 	         }
 	}

@@ -21,24 +21,25 @@
         <activity
             android:name="com.example.exercise_04.Main"
             android:label="@string/app_name" >
-         </activity>   
-         <activity
+        </activity>
+        <activity
             android:name="com.example.exercise_04.MapListActivity"
-            android:label="@string/app_name" >    
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <!--   <activity
-            android:name="com.example.exercise_04.MapListActiviy"
-            android:label="@string/title_activity_list_activiy" >
-        </activity> 
         <activity
-            android:name="com.example.exercise_04.MapActivity"
-            android:label="@string/title_activity_map" > 
-        </activity> -->
+            android:name="com.example.exercise_04.MapsAct"
+            android:label="@string/title_activity_maps" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
