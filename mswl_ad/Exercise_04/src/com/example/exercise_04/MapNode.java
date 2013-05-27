@@ -25,8 +25,23 @@ public class MapNode implements Parcelable  {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		
+		dest.writeString(MapTitle);
+		dest.writeString(MapDescription);
+	    dest.writeInt(MapImageResource);
+	    dest.writeDouble(MapLatitude);
+	    dest.writeDouble(MapLongititude);
+		
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public MapNode(Parcel mp) {
+		MapTitle = mp.readString();
+		MapDescription = mp.readString();
+		MapImageResource = mp.readInt();
+		MapLatitude = mp.readDouble();
+		MapLongititude = mp.readDouble();
 	}
 
 }
