@@ -21,6 +21,10 @@
         <activity
             android:name="com.example.exer_04.MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.exer_04.MapListActivity"
+            android:label="@string/title_activity_list" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,13 +32,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.exer_04.ListActivity"
-            android:label="@string/title_activity_list" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name="com.example.exer_04.MyMaps"
+            android:label="@string/title_activity_my_maps" >
         </activity>
     </application>
 

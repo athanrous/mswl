@@ -9,9 +9,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
@@ -33,7 +31,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+	
 		myView = (MapView) findViewById(R.id.mapView);
 		textVLoc = (TextView) findViewById(R.id.tVLoc);
 		myView.setBuiltInZoomControls(true);
@@ -41,6 +39,7 @@ public class MainActivity extends Activity {
         myControl = myView.getController();
         
         initValue();
+        refreshMap(); 
 
 	}
 	
