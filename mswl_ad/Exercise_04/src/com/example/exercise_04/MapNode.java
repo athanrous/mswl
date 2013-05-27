@@ -16,6 +16,22 @@ public class MapNode implements Parcelable  {
     	super();
 		// TODO Auto-generated constructor stub
 	}
+    
+    public static final Parcelable.Creator<MapNode> CREATOR = new Creator<MapNode>() {
+    	
+    	public MapNode createFromParcel(Parcel in){
+    		
+    		return new MapNode(in);
+    	}
+
+		@Override
+		public MapNode[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new MapNode[size];
+		}
+    	
+    	
+    };
 
 	@Override
 	public int describeContents() {

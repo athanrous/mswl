@@ -1,22 +1,14 @@
 package com.example.exercise_04;
 
 import java.util.List;
-
 import android.os.Bundle;
-//import android.app.Activity;
 import android.view.Menu;
-//import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-//import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-//import android.os.Bundle;
-//import android.util.Log;
-//import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -27,9 +19,9 @@ import com.example.exercise_04.MapNode;
 
 public class Main extends MapActivity {
 	
-	private MapView mView=null;
+	private MapView mView;
 	
-	private MapController mControl=null;
+	private MapController mControl;
 	
 	private MapNode sMap;
 	
@@ -66,21 +58,8 @@ public class Main extends MapActivity {
 		 
 		 if (valueIntent != null){
 			 
-			 double SLat = valueIntent.getDoubleExtra("Latitude", 0);
-			 
-			 double SLon = valueIntent.getDoubleExtra("Longitude", 0);
-			 
-			 sMap = new MapNode();
-			 
-			 sMap.MapLongititude = SLon;
-					 
-			 sMap.MapLatitude = SLat;
-			 
-			 sMap.MapTitle = valueIntent.getStringExtra("Title");
-					 
-			 sMap.MapDescription =  valueIntent.getStringExtra("Description");
-			 
-			 sMap.MapImageResource = valueIntent.getIntExtra("Image", 0);			 
+			 sMap = valueIntent.getParcelableExtra("node");
+	 
 			 
 		 }
 		 
