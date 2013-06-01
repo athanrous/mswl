@@ -11,6 +11,7 @@
         android:id="@+id/pubs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:maxLines="3"
         android:textSize="12sp" />
 

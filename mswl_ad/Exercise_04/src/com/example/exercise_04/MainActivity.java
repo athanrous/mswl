@@ -29,6 +29,7 @@ public class MainActivity extends ListActivity {
 		setContentView(R.layout.activity_main);
 		mAdapter = new MyAdapter(this);
 		setListAdapter(mAdapter);
+		setData();
 		
 	}
 
@@ -57,7 +58,58 @@ public class MainActivity extends ListActivity {
 	
 	
 	
-	 
+	 private void setData() {
+
+	        mapArray.clear();
+
+	        MapNode myMnode = new MapNode();
+
+	        
+	        myMnode.mapTitle = this.getResources().getString(R.string.title1);
+	        myMnode.mapDesc = this.getResources().getString(
+	                R.string.description1);
+	        myMnode.mapImage = R.drawable.image_01;
+	        
+	        // Universidad Rey Juan Carlos
+	        myMnode.mapLon = -3.819945;
+	        myMnode.mapLat = 40.281523;
+	        
+		
+	        
+	        mapArray.add(myMnode);
+
+	        
+	        MapNode mynode2 = new MapNode();
+
+	        mynode2.mapTitle = this.getResources().getString(R.string.title2);
+	        mynode2.mapDesc = this.getResources().getString(
+	                R.string.description2);
+	        mynode2.mapImage = R.drawable.image_02;
+	        // University of Macedonia
+	        mynode2.mapLon = 22.959616;
+	        mynode2.mapLat = 40.624995;
+	        
+		
+	        
+	        mapArray.add(mynode2);
+
+	        MapNode mynode3 = new MapNode();
+
+	        mynode3.mapTitle = this.getResources().getString(R.string.title3);
+	        mynode3.mapDesc = this.getResources().getString(
+	                R.string.description3);
+	        mynode3.mapImage = R.drawable.image_03;
+	        // Democritus University of Thrace
+	        mynode3.mapLon = 24.887895;
+	        mynode3.mapLat = 41.141995;
+	        
+		
+	        
+	        mapArray.add(mynode3);
+
+	        mapArray.addAll(mapArray);
+
+	    } 
 
 	 
 	   public static class MyAdapter extends BaseAdapter {
