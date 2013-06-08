@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="10" />
-    
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -35,6 +35,15 @@
         <activity
             android:name="com.example.exercise_02.Activity_03"
             android:label="@string/title_activity_activity_03" >
+        </activity>
+        <activity
+            android:name="com.example.exercise_02.MList"
+            android:label="@string/title_activity_mlist" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
