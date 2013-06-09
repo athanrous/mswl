@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <EditTextPreference
+        android:key="Search"
+        android:title="@string/search_title"
+        android:summary="@string/search_summary"
+    	android:defaultValue="http://search.twitter.com/search.json?q=" />
+    <EditTextPreference
+        android:key="Distance"
+        android:title="@string/range_title"
+        android:summary="@string/range_summary"
+    	android:defaultValue="100" />
+	<ListPreference
+        android:key="Unities"
+        android:title="@string/units_title"
+        android:summary="@string/units_summary"
+    	android:defaultValue="km" />
+	<EditTextPreference
+        android:key="ResultsPerPage"
+        android:title="@string/rpp_title"
+        android:summary="@string/rpp_summary"
+    	android:defaultValue="25" />
+	<PreferenceCategory 
+	    android:title="@string/prefs_localizacion">
+	    <CheckBoxPreference
+	        android:key="LocManual"
+	        android:title="@string/locman_title"
+	        android:summary="@string/locman_summary"
+	    	android:defaultValue="true" />
+		<EditTextPreference
+		    android:key="Latitude"
+		    android:title="@string/lat_title"
+		    android:summary="@string/lat_summary"
+		   	android:defaultValue="40.482925" />
+		<EditTextPreference
+		    android:key="Longitude"
+		    android:title="@string/lon_title"
+		    android:summary="@string/lon_summary"
+		   	android:defaultValue="-3.363131" />
+	</PreferenceCategory>
+</PreferenceScreen>
