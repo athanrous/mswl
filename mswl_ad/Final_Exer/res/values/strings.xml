@@ -34,28 +34,28 @@
     
     
    
-    <string name="tvbuscar">Introduce el término a buscar:</string>
-    <string name="empty_query">Introducir un término a buscar</string>
-    <string name="no_gps_location">Sin localización GPS válida\nusando localización por defecto</string>
-    <string name="location_provider">Proveedor de posición:</string>
+   <!-- <string name="tvbuscar">Introduce el término a buscar:</string> -->
+    <string name="empty_query">Introducir un término a buscar</string> 
+    <string name="no_gps_location">No gps location by default. Searching for a new one.</string>
+    <string name="location_provider">Position provider</string>
     
     
     <string name="tvnota">NOTA: Todo elemento relativo a Twitter incluido en el presente trabajo es poriedad de Twitter, Inc.\nEste trabajo sólo tiene fines educativos.</string>
-    <string name="search_title">Url de búsqueda</string>
-    <string name="search_summary">Url de la API de búsqueda</string>
-    <string name="range_title">Distancia</string>
+    <string name="search_title">Search Url</string>
+    <string name="search_summary">Search Url of the API</string>
+    <string name="range_title">Distance</string>
     <string name="range_summary">Radio de búsqueda partiendo de nuestra posición actual</string>
-    <string name="units_title">Unidades</string>
-    <string name="units_summary">Unidades de medida de la distancia</string>
-    <string name="rpp_title">Resultados</string>
-    <string name="rpp_summary">Número de resultados por consulta (máx. 100)</string>
-    <string name="prefs_localizacion">Localización</string>
-    <string name="locman_title">Localización manual</string>
-    <string name="locman_summary">Usa latitud y longitud indicadas a continuación. No las obtiene de GPS u otro sistema</string>
-    <string name="lat_title">Latitud</string>
-    <string name="lat_summary">Norte es positivo y Sur negativo. Usar punto decimal en lugar de coma</string>
-    <string name="lon_title">Longitud</string>
-    <string name="lon_summary">Este es positivo y Oeste negativo. Usar punto decimal en lugar de coma</string>
+    <string name="units_title">Units</string>
+    <string name="units_summary">Units measuring distance</string>
+    <string name="rpp_title">Results</string>
+    <string name="rpp_summary">Number of results per query</string>
+    <string name="prefs_localizacion">Localization</string>
+    <string name="locman_title">Manual localization</string>
+    <string name="locman_summary">Use latitude and longitude indicated in below</string>
+    <string name="lat_title">Latitude</string>
+    <string name="lat_summary">North is positive and South is negative</string>
+    <string name="lon_title">Longitude</string>
+    <string name="lon_summary">This is the positive and West is negative</string>
     
     
 
