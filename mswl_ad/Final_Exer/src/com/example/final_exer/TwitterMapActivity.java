@@ -28,11 +28,27 @@ public class TwitterMapActivity extends MapActivity {
 		mapView = (MapView) findViewById(R.id.TTSMapView);
 		String mapLat = null;						
 		String mapLon = null;						
-		
-		
-		
+						
 		Intent i = getIntent();					
 		
+		  
+        if (i != null)  						
+		{
+			mapLatitude = i.getStringExtra(TwitterListActivity.MPLAT); 	
+			mapLongitude = i.getStringExtra(TwitterListActivity.MPLON); 	
+
+			
+
+			if (mapLatitude == null)  			
+			{
+				mapLatitude = TwitterListActivity.LAT_DEF;	
+			}
+
+			if (mapLongitude == null)  			
+			{
+				mapLongitude = TwitterListActivity.LON_DEF;	
+			}
+		}
 		
 		
 		

@@ -74,6 +74,7 @@ public final class R {
         public static final int lon_summary=0x7f05002b;
         public static final int lon_title=0x7f05002a;
         public static final int map_key=0x7f05000a;
+        public static final int no_data=0x7f050017;
         public static final int no_gps_location=0x7f05001a;
         public static final int placeholder=0x7f050005;
         public static final int prefs_localizacion=0x7f050025;
@@ -85,7 +86,6 @@ public final class R {
         public static final int search_label=0x7f050004;
         public static final int search_summary=0x7f05001e;
         public static final int search_title=0x7f05001d;
-        public static final int sin_datos=0x7f050017;
         public static final int title1=0x7f050009;
         public static final int title2=0x7f05000c;
         public static final int title3=0x7f05000e;

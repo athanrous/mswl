@@ -27,10 +27,12 @@
     
     <string name="tvMap">Latitude and Longitude of the position given</string>
     
-     <string name="empty"></string>
+    <string name="empty"></string>
+    
+    <string name="no_data">No data found</string>
     
     
-    <string name="sin_datos">No hay resultados disponibles\npara la consulta realizada</string>
+    
    
     <string name="tvbuscar">Introduce el término a buscar:</string>
     <string name="empty_query">Introducir un término a buscar</string>
