@@ -15,13 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class TwitterMainActivity extends Activity {
+public class TwitterMainActivity extends Activity implements LocationListener {
 	
 	public static String DATA = "DATA_TO_SEARCH";
 	public static String LAT = "LATITUD";
 	public static String LON = "LONGITUD";
 	public String data = null;
-	private LocationManager myLocMgr;
+	private LocationManager myLocMan;
 	private String myProvider;
 	private String myLatitud;
 	private String myLongitud;
@@ -30,13 +30,111 @@ public class TwitterMainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_twitter_main);
+		
+		myLocMan = (LocationManager) getSystemService(LOCATION_SERVICE);
+		Criteria criteria = new Criteria();
+		myProvider = myLocMan.getBestProvider(criteria, true); 
+		
+		
+		Toast.makeText(getBaseContext(), getString(R.string.location_provider)+ " " + myProvider, Toast.LENGTH_SHORT).show();
+		
+		
+        Button bt1 = (Button) this.findViewById(R.id.butSearch);
+        
+		if (bt1 != null)										
+		{
+			bt1.setOnClickListener(new OnClickListener() { 			
+				
+				@Override
+				public void onClick(View v) {					
+					data = "oSC13";  
+					data = data.replace(" ", "+");					
+					
+					if (data.equals("")) {							
+						Toast.makeText(getBaseContext(), getString(R.string.empty_query), Toast.LENGTH_SHORT).show();
+					} else {
+						
+						
+						
+						if (myLatitud == null || myLongitud == null) {
+							Toast.makeText(getBaseContext(), getString(R.string.no_gps_location), Toast.LENGTH_SHORT).show();
+						}
+								
+						Intent intent = new Intent(getBaseContext(), TwitterListActivity.class); 
+						intent.putExtra(DATA, data);				
+						intent.putExtra(LAT, myLatitud);			
+						intent.putExtra(LON, myLongitud);			
+						startActivity(intent);					
+						
+					}
+					
+				}
+			} );
+		}
+	}
+
+	
+	@Override    
+    protected void onResume() {
+          super.onResume();
+          
+          myLocMan.requestLocationUpdates(myProvider, 10000, 15, this); 
+    }
+
+	
+
+	
+	 @Override    
+	    protected void onPause() {
+	          super.onPause();
+	          
+	          myLocMan.removeUpdates(this);
+	    }
+	@Override
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+		
+		myLatitud = String.valueOf(location.getLatitude());
+        myLongitud = String.valueOf(location.getLongitude());
+        Toast.makeText(getBaseContext(), "Loc: " + myLatitud + "," + myLongitud, Toast.LENGTH_SHORT).show();
+		
 	}
 
 	@Override
+	public void onProviderDisabled(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderEnabled(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		
 		getMenuInflater().inflate(R.menu.twitter_main, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			startActivity(new Intent(this, TwitterPrefs.class));
+			return true;
+		}
+		return false;
 	}
 
 }
