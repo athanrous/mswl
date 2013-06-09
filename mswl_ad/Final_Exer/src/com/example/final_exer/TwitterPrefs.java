@@ -11,7 +11,7 @@ public class TwitterPrefs extends PreferenceActivity {
 	private static final String OPT_SEARCH = "Search";
 	private static final String OPT_SEARCH_DEF = "http://search.twitter.com/search.json?q=";
 	private static final String OPT_RANGE = "Distance";
-	private static final String OPT_RANGE_DEF = "100";
+	private static final String OPT_RANGE_DEF = "3000";
 	private static final String OPT_UNITS = "Unities";
 	private static final String OPT_UNITS_DEF = "km";
 	private static final String OPT_RPP = "ResultsPerPage";
