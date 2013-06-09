@@ -17,31 +17,40 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f030000;
+        public static final int activity_vertical_margin=0x7f030001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int image_01=0x7f020001;
+        public static final int image_02=0x7f020002;
+        public static final int image_03=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f080003;
-        public static final int search_btn=0x7f080000;
-        public static final int search_edit=0x7f080001;
-        public static final int tweet_txt=0x7f080002;
-    }
-    public static final class layout {
-        public static final int activity_twitter_search=0x7f030000;
+        public static final int action_settings=0x7f070000;
     }
     public static final class menu {
-        public static final int twitter_search=0x7f070000;
+        public static final int main=0x7f060000;
+        public static final int maps_ext=0x7f060001;
+        public static final int twitter_search=0x7f060002;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
-        public static final int hint=0x7f050003;
-        public static final int placeholder=0x7f050005;
-        public static final int search_label=0x7f050004;
+        public static final int action_settings=0x7f040001;
+        public static final int app_name=0x7f040000;
+        public static final int description1=0x7f04000b;
+        public static final int description2=0x7f04000d;
+        public static final int description3=0x7f04000f;
+        public static final int headList=0x7f040006;
+        public static final int hello_world=0x7f040002;
+        public static final int hint=0x7f040003;
+        public static final int map_key=0x7f04000a;
+        public static final int placeholder=0x7f040005;
+        public static final int pub=0x7f040008;
+        public static final int search_label=0x7f040004;
+        public static final int title1=0x7f040009;
+        public static final int title2=0x7f04000c;
+        public static final int title3=0x7f04000e;
+        public static final int title_activity_maps_ext=0x7f040007;
     }
     public static final class style {
         /** 
@@ -54,10 +63,10 @@ public final class R {
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f050000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f050001;
     }
 }
