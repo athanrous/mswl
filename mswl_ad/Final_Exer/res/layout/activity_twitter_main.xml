@@ -36,16 +36,5 @@
     	android:layout_marginTop="10dp"
     	android:layout_gravity="center"
     	android:text="@string/butBrowse"/>
-    
-    <Button 
-        android:id="@+id/butMail"
-    	android:layout_width="wrap_content"
-    	android:layout_height="35dp"
-    	android:textSize="12sp"
-    	android:layout_marginTop="10dp"
-    	android:layout_gravity="center"
-    	android:text="@string/butMail"/>
-    
-    
-    
+       
 </LinearLayout>    

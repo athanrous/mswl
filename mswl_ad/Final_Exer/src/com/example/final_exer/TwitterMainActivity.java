@@ -43,9 +43,7 @@ public class TwitterMainActivity extends Activity implements LocationListener {
         Button bt1 = (Button) this.findViewById(R.id.butSearch);
         
         Button btBrowser = (Button) this.findViewById(R.id.butBrowse);
-        
-        Button btMail = (Button) this.findViewById(R.id.butMail);
-        
+         
 		if (bt1 != null)										
 		{
 			bt1.setOnClickListener(new OnClickListener() { 			
