@@ -20,26 +20,18 @@
     <string name="title_activity_twitter_list">TwitterList</string>
     <string name="title_activity_twitter_main">TwitterMainActivity</string>
     <string name="title_activity_twitter_map">TwitterMapActivity</string>
-    
+    <string name="butBrowse">Take me there!!</string>
     <string name="butSearch">Search for #oSC13</string>
-    
+    <string name="butMail">Contact me!</string>
     <string name="imgSearch">Application Logo</string>
-    
     <string name="tvMap">Latitude and Longitude of the position given</string>
-    
     <string name="empty"></string>
-    
+    <string name="send">Send</string>
+     <string name="clear">Clear</string>
     <string name="no_data">No data found</string>
-    
-    
-    
-   
-   <!-- <string name="tvbuscar">Introduce el término a buscar:</string> -->
-    <string name="empty_query">Introducir un término a buscar</string> 
+    <string name="empty_query">Introducir un término a buscar</string>
     <string name="no_gps_location">No gps location by default. Searching for a new one.</string>
     <string name="location_provider">Position provider</string>
-    
-    
     <string name="tvnota">NOTA: Todo elemento relativo a Twitter incluido en el presente trabajo es poriedad de Twitter, Inc.\nEste trabajo sólo tiene fines educativos.</string>
     <string name="search_title">Search Url</string>
     <string name="search_summary">Search Url of the API</string>
@@ -56,7 +48,6 @@
     <string name="lat_summary">North is positive and South is negative</string>
     <string name="lon_title">Longitude</string>
     <string name="lon_summary">This is the positive and West is negative</string>
-    
-    
+    <string name="title_activity_mail">MailActivity</string>
 
 </resources>

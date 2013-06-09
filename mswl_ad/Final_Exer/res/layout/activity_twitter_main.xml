@@ -15,7 +15,7 @@
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_gravity="center"
-        android:src="@drawable/image_01"
+        android:src="@drawable/osc13_logo"
         android:contentDescription="@string/imgSearch" />
 
     
@@ -27,5 +27,25 @@
     	android:layout_marginTop="10dp"
     	android:layout_gravity="center"
     	android:text="@string/butSearch"/>
+    
+    <Button 
+        android:id="@+id/butBrowse"
+    	android:layout_width="wrap_content"
+    	android:layout_height="35dp"
+    	android:textSize="12sp"
+    	android:layout_marginTop="10dp"
+    	android:layout_gravity="center"
+    	android:text="@string/butBrowse"/>
+    
+    <Button 
+        android:id="@+id/butMail"
+    	android:layout_width="wrap_content"
+    	android:layout_height="35dp"
+    	android:textSize="12sp"
+    	android:layout_marginTop="10dp"
+    	android:layout_gravity="center"
+    	android:text="@string/butMail"/>
+    
+    
     
 </LinearLayout>    

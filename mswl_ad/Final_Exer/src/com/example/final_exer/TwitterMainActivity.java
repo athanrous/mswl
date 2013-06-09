@@ -6,6 +6,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,10 @@ public class TwitterMainActivity extends Activity implements LocationListener {
 		
         Button bt1 = (Button) this.findViewById(R.id.butSearch);
         
+        Button btBrowser = (Button) this.findViewById(R.id.butBrowse);
+        
+        Button btMail = (Button) this.findViewById(R.id.butMail);
+        
 		if (bt1 != null)										
 		{
 			bt1.setOnClickListener(new OnClickListener() { 			
@@ -70,6 +75,34 @@ public class TwitterMainActivity extends Activity implements LocationListener {
 					
 				}
 			} );
+		}
+		
+		if (btBrowser != null)										
+		{
+			
+			btBrowser.setOnClickListener( new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent browserIntent = 	new Intent(Intent.ACTION_VIEW, Uri.parse("https://conference.opensuse.org"));
+					startActivity(browserIntent);
+					
+				}
+			});
+			
+			
+			
+		}
+		
+		if (btMail != null)
+		{
+			//Intent email_intent = new Intent(Intent.ACTION_SENDTO); // it's not ACTION_SEND
+			//email_intent.setType("text/plain");
+			//email_intent.putExtra(Intent.EXTRA_SUBJECT, "Participation oSC13");
+			//email_intent.putExtra(Intent.EXTRA_TEXT, "Hi I want to participate to oSC13");
+			//email_intent.setData(Uri.parse("mailto:opensuse-conference@opensuse.org")); // or just "mailto:" for blank
+			//email_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+			//startActivity(email_intent);
 		}
 	}
 
