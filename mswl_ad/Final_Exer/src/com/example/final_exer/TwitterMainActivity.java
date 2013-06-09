@@ -93,17 +93,6 @@ public class TwitterMainActivity extends Activity implements LocationListener {
 			
 			
 		}
-		
-		if (btMail != null)
-		{
-			//Intent email_intent = new Intent(Intent.ACTION_SENDTO); // it's not ACTION_SEND
-			//email_intent.setType("text/plain");
-			//email_intent.putExtra(Intent.EXTRA_SUBJECT, "Participation oSC13");
-			//email_intent.putExtra(Intent.EXTRA_TEXT, "Hi I want to participate to oSC13");
-			//email_intent.setData(Uri.parse("mailto:opensuse-conference@opensuse.org")); // or just "mailto:" for blank
-			//email_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
-			//startActivity(email_intent);
-		}
 	}
 
 	
