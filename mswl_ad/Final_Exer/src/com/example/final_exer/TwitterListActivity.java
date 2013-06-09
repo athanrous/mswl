@@ -302,7 +302,7 @@ public class TwitterListActivity extends ListActivity {
 	        	mpLongitude = LON_DEF;		
 	        }
 	        
-	        Intent intent = new Intent(getBaseContext(), TwitterMainActivity.class);
+	        Intent intent = new Intent(getBaseContext(), TwitterMapActivity.class);
 			intent.putExtra(MPLAT, mpLatitude);
 			intent.putExtra(MPLON, mpLongitude);
 			startActivity(intent);
