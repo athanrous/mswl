@@ -17,8 +17,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f030000;
-        public static final int activity_vertical_margin=0x7f030001;
+        public static final int activity_horizontal_margin=0x7f040000;
+        public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -27,30 +27,70 @@ public final class R {
         public static final int image_03=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f070000;
+        public static final int TTSMapView=0x7f080003;
+        public static final int action_settings=0x7f080004;
+        public static final int butSearch=0x7f080001;
+        public static final int imgSearch=0x7f080000;
+        public static final int tvMap=0x7f080002;
+    }
+    public static final class layout {
+        public static final int activity_twitter_list=0x7f030000;
+        public static final int activity_twitter_main=0x7f030001;
+        public static final int activity_twitter_map=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f060000;
-        public static final int maps_ext=0x7f060001;
-        public static final int twitter_search=0x7f060002;
+        public static final int main=0x7f070000;
+        public static final int maps_ext=0x7f070001;
+        public static final int twitter_list=0x7f070002;
+        public static final int twitter_main=0x7f070003;
+        public static final int twitter_map=0x7f070004;
+        public static final int twitter_search=0x7f070005;
     }
     public static final class string {
-        public static final int action_settings=0x7f040001;
-        public static final int app_name=0x7f040000;
-        public static final int description1=0x7f04000b;
-        public static final int description2=0x7f04000d;
-        public static final int description3=0x7f04000f;
-        public static final int headList=0x7f040006;
-        public static final int hello_world=0x7f040002;
-        public static final int hint=0x7f040003;
-        public static final int map_key=0x7f04000a;
-        public static final int placeholder=0x7f040005;
-        public static final int pub=0x7f040008;
-        public static final int search_label=0x7f040004;
-        public static final int title1=0x7f040009;
-        public static final int title2=0x7f04000c;
-        public static final int title3=0x7f04000e;
-        public static final int title_activity_maps_ext=0x7f040007;
+        public static final int action_settings=0x7f050001;
+        public static final int app_name=0x7f050000;
+        public static final int butSearch=0x7f050013;
+        public static final int description1=0x7f05000b;
+        public static final int description2=0x7f05000d;
+        public static final int description3=0x7f05000f;
+        public static final int empty=0x7f050016;
+        public static final int empty_query=0x7f050019;
+        public static final int headList=0x7f050006;
+        public static final int hello_world=0x7f050002;
+        public static final int hint=0x7f050003;
+        public static final int imgSearch=0x7f050014;
+        public static final int lat_summary=0x7f050029;
+        public static final int lat_title=0x7f050028;
+        public static final int location_provider=0x7f05001b;
+        public static final int locman_summary=0x7f050027;
+        public static final int locman_title=0x7f050026;
+        public static final int lon_summary=0x7f05002b;
+        public static final int lon_title=0x7f05002a;
+        public static final int map_key=0x7f05000a;
+        public static final int no_gps_location=0x7f05001a;
+        public static final int placeholder=0x7f050005;
+        public static final int prefs_localizacion=0x7f050025;
+        public static final int pub=0x7f050008;
+        public static final int range_summary=0x7f050020;
+        public static final int range_title=0x7f05001f;
+        public static final int rpp_summary=0x7f050024;
+        public static final int rpp_title=0x7f050023;
+        public static final int search_label=0x7f050004;
+        public static final int search_summary=0x7f05001e;
+        public static final int search_title=0x7f05001d;
+        public static final int sin_datos=0x7f050017;
+        public static final int title1=0x7f050009;
+        public static final int title2=0x7f05000c;
+        public static final int title3=0x7f05000e;
+        public static final int title_activity_maps_ext=0x7f050007;
+        public static final int title_activity_twitter_list=0x7f050010;
+        public static final int title_activity_twitter_main=0x7f050011;
+        public static final int title_activity_twitter_map=0x7f050012;
+        public static final int tvMap=0x7f050015;
+        public static final int tvbuscar=0x7f050018;
+        public static final int tvnota=0x7f05001c;
+        public static final int units_summary=0x7f050022;
+        public static final int units_title=0x7f050021;
     }
     public static final class style {
         /** 
@@ -63,10 +103,10 @@ public final class R {
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
+        public static final int AppTheme=0x7f060001;
     }
 }
