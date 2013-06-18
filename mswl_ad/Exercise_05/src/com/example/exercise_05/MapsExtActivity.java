@@ -1,7 +1,8 @@
-package com.example.exercise_04;
+package com.example.exercise_05;
 
 import java.util.List;
 
+import com.example.exercise_04.R;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;

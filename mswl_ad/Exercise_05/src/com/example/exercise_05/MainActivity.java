@@ -1,4 +1,4 @@
-package com.example.exercise_04;
+package com.example.exercise_05;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.exercise_04.MapNode;
+
+import com.example.exercise_04.R;
+import com.example.exercise_05.MapNode;
 
 public class MainActivity extends ListActivity {
 
@@ -68,7 +70,7 @@ public class MainActivity extends ListActivity {
 	        myMnode.mapTitle = this.getResources().getString(R.string.title1);
 	        myMnode.mapDesc = this.getResources().getString(
 	                R.string.description1);
-	        myMnode.mapImage = R.drawable.image_01;
+	        myMnode.mapImage = R.drawable.athens;
 	        
 	        // Universidad Rey Juan Carlos
 	        myMnode.mapLon = -3.819945;
@@ -84,7 +86,7 @@ public class MainActivity extends ListActivity {
 	        mynode2.mapTitle = this.getResources().getString(R.string.title2);
 	        mynode2.mapDesc = this.getResources().getString(
 	                R.string.description2);
-	        mynode2.mapImage = R.drawable.image_02;
+	        mynode2.mapImage = R.drawable.madrid;
 	        // University of Macedonia
 	        mynode2.mapLon = 22.959616;
 	        mynode2.mapLat = 40.624995;
@@ -98,7 +100,7 @@ public class MainActivity extends ListActivity {
 	        mynode3.mapTitle = this.getResources().getString(R.string.title3);
 	        mynode3.mapDesc = this.getResources().getString(
 	                R.string.description3);
-	        mynode3.mapImage = R.drawable.image_03;
+	        mynode3.mapImage = R.drawable.nyc;
 	        // Democritus University of Thrace
 	        mynode3.mapLon = 24.887895;
 	        mynode3.mapLat = 41.141995;

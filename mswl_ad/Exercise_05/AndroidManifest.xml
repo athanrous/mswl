@@ -19,7 +19,7 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name="com.example.exercise_04.MainActivity"
+            android:name="com.example.exercise_05.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.exercise_04.MapsExtActivity"
+            android:name="com.example.exercise_05.MapsExtActivity"
             android:label="@string/title_activity_maps_ext" >
         </activity>
     </application>

@@ -1,4 +1,4 @@
-package com.example.exercise_04;
+package com.example.exercise_05;
 
 
 import android.os.Parcel;
@@ -9,6 +9,7 @@ public class MapNode implements Parcelable{
 	public String mapTitle;
     public String mapDesc;
     public Integer mapImage;
+    public Integer listRank;
     public double mapLat;
     public double mapLon;
     
@@ -44,6 +45,7 @@ public class MapNode implements Parcelable{
 		mDest.writeInt(mapImage);
 		mDest.writeDouble(mapLat);
 		mDest.writeDouble(mapLon);
+		mDest.writeInt(listRank);
 	}
 	
 	public MapNode(Parcel mPar){
@@ -53,6 +55,7 @@ public class MapNode implements Parcelable{
         mapImage = mPar.readInt();
         mapLat = mPar.readDouble();
         mapLon = mPar.readDouble();
+        listRank = mPar.readInt();
 
 	
 	}
