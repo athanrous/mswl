@@ -31,6 +31,10 @@
             android:name="com.example.exercise_05.MapsExtActivity"
             android:label="@string/title_activity_maps_ext" >
         </activity>
+        <activity
+            android:name="com.example.exercise_04.JSONParseActivity"
+            android:label="@string/title_activity_jsonparse" >
+        </activity>
     </application>
 
 </manifest>

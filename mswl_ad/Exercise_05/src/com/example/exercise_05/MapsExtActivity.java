@@ -42,7 +42,7 @@ public class MapsExtActivity extends MapActivity {
 	
 	
 	   private void initializeValuesFromIntent() {
-	        // Retrieve value from nucleos activity.
+	   
 	        Intent intentFromActivity = getIntent();
 
 	        if (intentFromActivity != null) {
@@ -86,9 +86,13 @@ public class MapsExtActivity extends MapActivity {
 
 	        mapView.setClickable(true);
 
+	        // Edw prepei na kanw allages
 	        textViewLocation.setText("Your Current Location is: \n"
 	                + String.valueOf(mGeoPoint.getLatitudeE6()) + " , "
-	                + String.valueOf(mGeoPoint.getLongitudeE6()));
+	                + String.valueOf(mGeoPoint.getLongitudeE6()) + " , "
+	                + mNodeMap.Temp
+	                
+	        		);
 	    }
    
 

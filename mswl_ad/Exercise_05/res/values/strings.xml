@@ -4,19 +4,16 @@
     <string name="app_name">Exercise_05</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    
     <string name="map_key">0Tp7WsIDiyqoDmSF9LMprvDzte-hj_A6r-qxbow</string>
-    
     <string name="headList">Head of the list</string>
     <string name="title_activity_maps_ext">MapsExtActivity</string>
-	<string name="pub">Spam Spam Spam</string>
-	
-	<string name="title1">Athens</string>	
+    <string name="pub">Spam Spam Spam</string>
+    <string name="title1">Athens</string>
     <string name="description1"> Athens  is the capital and largest city of Greece.Athens dominates the Attica region and is one of the worlds oldest cities, with its recorded history spanning around 3,400 years.  </string>
-    
     <string name="title2">Madrid</string>
     <string name="description2">Madrid  is the capital and largest city of Spain.The population of the city is roughly 3.3 million and the entire population of the Madrid metropolitan area is calculated to be around 6.5 million.</string>
-    
     <string name="title3">New York</string>
     <string name="description3">New York is the most populous city in the United States and the center of the New York Metropolitan Area, one of the most populous urban agglomerations in the world.The city is referred to as New York City or the City of New York to distinguish it from the State of New York, of which it is a part. </string>
+    <string name="title_activity_jsonparse">JSONParseActivity</string>
+
 </resources>
