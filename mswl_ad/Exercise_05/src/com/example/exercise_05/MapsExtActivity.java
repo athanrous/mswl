@@ -90,7 +90,7 @@ public class MapsExtActivity extends MapActivity {
 	        textViewLocation.setText("Location:"
 	                + String.valueOf(mGeoPoint.getLatitudeE6()) + " , "
 	                + String.valueOf(mGeoPoint.getLongitudeE6()) + " "
-	                + "Temprature:\n"
+	                + "Temprature:"
 	                + mNodeMap.Temp + ""
 	                
 	        		);

@@ -7,6 +7,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
 import android.os.Bundle;
 import android.app.ListActivity;
 import android.content.Context;
@@ -37,7 +40,10 @@ public class MainActivity extends ListActivity {
 	public static final String TAG_LONGITUDE = "lon";
 	public static final String TAG_AVG_TEMP = "avg_temp";
 	public static final String TAG_POPULATION = "pop";
-	
+	public String connectionType;
+	public ConnectivityManager conInfo;
+	public State mobileConn;
+	public State wifiConn;
 	
 	private static ArrayList<MapNode> mapArray = new ArrayList<MapNode>();
 	@Override
@@ -63,6 +69,19 @@ public class MainActivity extends ListActivity {
 	        } else {
 
 	            pos = pos - ((pos + 1) / 3);
+	            
+	            //Here we get information about the type of connection
+	            
+	            conInfo = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+	            mobileConn = conInfo.getNetworkInfo(0).getState();
+	            wifiConn = conInfo.getNetworkInfo(1).getState();
+	           
+				if (mobileConn == NetworkInfo.State.CONNECTED)
+	            		connectionType = "Mobile/Data Roaming";
+	            else if (wifiConn == NetworkInfo.State.CONNECTED)
+	            		connectionType = "Wifi Connection";
+				
+				System.out.println(connectionType);
 
 	            MapNode selectedNode = mapArray.get(pos);
 	            Intent intentMapsExercise = new Intent(MainActivity.this,
