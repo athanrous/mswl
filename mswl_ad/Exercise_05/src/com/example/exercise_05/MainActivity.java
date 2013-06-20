@@ -1,6 +1,7 @@
 package com.example.exercise_05;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,26 +31,12 @@ public class MainActivity extends ListActivity {
 
 	private MyAdapter mAdapter = null;
 	
-	public static final String TAG_CONTACTS = "contacts";
-	public static final String TAG_COORDINATES = "coord";
+	public static final String TAG_DATA = "data";
+	public static final String TAG_CITY = "city";
 	public static final String TAG_LATITUDE = "lat";
-	public static final String TAG_LONGITUDE = "lot";
-	public static final String TAG_SYS = "sys";	
-	public static final String TAG_COUNTRY = "country";	
-	public static final String TAG_SUNRISE = "sunrise";	
-	public static final String TAG_SUNSET  = "sunset";	
-	public static final String TAG_WEATHER = "weather";	
-	public static final String TAG_ID = "id";	
-	public static final String TAG_MAIN = "main";	
-	public static final String TAG_DESCRIPTION = "description";	
-	public static final String TAG_ICON = "icon";	
-	public static final String TAG_BASE = "base";	
-	public static final String TAG_MAIN_01 ="main_01";	
-	public static final String TAG_TEMP = "temp";	
-	public static final String TAG_HUMIDITY = "humidity";	
-	public static final String TAG_PRESSURE = "pressure";	
-	public static final String TAG_TEMP_MIN ="temp_min"; 
-	public static final String TAG_TEMP_MAX = "temp_max";
+	public static final String TAG_LONGITUDE = "lon";
+	public static final String TAG_AVG_TEMP = "avg_temp";
+	public static final String TAG_POPULATION = "pop";
 	
 	
 	private static ArrayList<MapNode> mapArray = new ArrayList<MapNode>();
@@ -83,76 +70,134 @@ public class MainActivity extends ListActivity {
 	            intentMapsExercise.putExtra("node", selectedNode);
 	            
 	            MapNode ATH = mapArray.get(0); // Get the first element of the MapArray (Athens)
-	            ATH.node_url = "http://api.openweathermap.org/data/2.5/find?q=New%20York&mode=json";
-	            JSONParser ATHParser = new JSONParser();
+	            JSONArray ATHdata = null;
+	    		ArrayList<HashMap<String, String>> ATHList = new ArrayList<HashMap<String, String>>();
+	    		
+	    		//We create an ArrayList in order to store the JSONArray and it's elements
+	    		
+	    		JSONParser ATHParser = new JSONParser();
 	            JSONObject ATHjson = ATHParser.getJSONFromUrl(ATH.node_url);
 	            
 	            try {
-					JSONObject coordObj = ATHjson.getJSONObject(TAG_COORDINATES);
+	            	
+	            	ATHdata = ATHjson.getJSONArray(TAG_DATA);
+	                for(int i = 0; i < ATHdata.length(); i++){
+	                	 JSONObject cATH = ATHdata.getJSONObject(i);    			
+	        			// Storing each json item in variable
+	        			String Acity = cATH.getString(TAG_CITY);
+	        			String Alat = cATH.getString(TAG_LATITUDE);
+	        			String Alon = cATH.getString(TAG_LONGITUDE);
+	        			String Aavg_temp = cATH.getString(TAG_AVG_TEMP);
+	        			String Apopulation = cATH.getString(TAG_POPULATION);	
+					//We receive the value as string and transform it to Float
 					
-					String lat_str = ATHjson.getString(TAG_LATITUDE); //We receive the value as string and transform it to Float
-					
-					float Latitude = Float.parseFloat(lat_str);
-					
-					String long_str = ATHjson.getString(TAG_LONGITUDE);
-					
-					float Longitude = Float.parseFloat(long_str);
-					
-					
-					ATH.mapLat = Latitude;
-					
-					ATH.mapLon = Longitude;
-					
-					ATH.Temp = 10;
+					float ATHLatitude = Float.parseFloat(Alat);		
+					float ATHLongitude = Float.parseFloat(Alon);
+				
+					ATH.mapLat = ATHLatitude;
+					ATH.mapLon = ATHLongitude;
+					ATH.Temp = Aavg_temp;	
 					
 					
+	                }
+	                
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
-	            	
-	            
-		        
-		        
-	            	
-	            
-	        	
-	        	
-	        	  
-	        
-	          
+				  
+	           
+	        	          
 	        	MapNode MAD = mapArray.get(1); // Get the second element of the MapArray (Madrid)
-	        	MAD.mapLon = -3.70256;
-	        	MAD.mapLat = 40.4165;
-	        	MAD.Temp = 12;
 	        	
+	        	 JSONArray MADdata = null;
+		    	 ArrayList<HashMap<String, String>> MADList = new ArrayList<HashMap<String, String>>();
+		    	 
+		    	//We create an ArrayList in order to store the JSONArray and it's elements
+		    		
+		    	JSONParser MADParser = new JSONParser();
+		        JSONObject MADjson = MADParser.getJSONFromUrl(MAD.node_url);
+	        	
+		        try {
+	            	
+	            	MADdata = MADjson.getJSONArray(TAG_DATA);
+	                for(int i = 0; i < MADdata.length(); i++){
+	                	 JSONObject cMAD = MADdata.getJSONObject(i);    			
+	        			// Storing each json item in variable
+	        			String Mcity = cMAD.getString(TAG_CITY);
+	        			String Mlat = cMAD.getString(TAG_LATITUDE);
+	        			String Mlon = cMAD.getString(TAG_LONGITUDE);
+	        			String Mavg_temp = cMAD.getString(TAG_AVG_TEMP);
+	        			String Mpopulation = cMAD.getString(TAG_POPULATION);
+	        			
+					
+					//We receive the value as string and transform it to Float
+					
+					float MADLatitude = Float.parseFloat(Mlat);		
+					float MADLongitude = Float.parseFloat(Mlon);
+				
+					MAD.mapLat = MADLatitude;
+					MAD.mapLon = MADLongitude;
+					MAD.Temp = Mavg_temp;	
+					
+					
+	                }
+	                
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        	
+	
 	        	
 	        	MapNode NYC = mapArray.get(2); // Get the third element of the MapArray (New York)
-	        	NYC.mapLon = -74.005966;
-		        NYC.mapLat = 40.714272;
-		        NYC.Temp = 13;
 	        	
+	        	JSONArray NYCdata = null;
+		    	ArrayList<HashMap<String, String>> NYCList = new ArrayList<HashMap<String, String>>();
+	        	
+		    	//We create an ArrayList in order to store the JSONArray and it's elements
+	    		
+		    	JSONParser NYCParser = new JSONParser();
+		        JSONObject NYCjson = NYCParser.getJSONFromUrl(NYC.node_url);
 		        
+		        try {
+	            	
+	            	NYCdata = NYCjson.getJSONArray(TAG_DATA);
+	                for(int i = 0; i < NYCdata.length(); i++){
+	                	 JSONObject cNYC = NYCdata.getJSONObject(i);    			
+	        			// Storing each json item in variable
+	        			String Ncity = cNYC.getString(TAG_CITY);
+	        			String Nlat = cNYC.getString(TAG_LATITUDE);
+	        			String Nlon = cNYC.getString(TAG_LONGITUDE);
+	        			String Navg_temp = cNYC.getString(TAG_AVG_TEMP);
+	        			String Npopulation = cNYC.getString(TAG_POPULATION);
+	        			
+					
+					//We receive the value as string and transform it to Float
+					
+					float NYCLatitude = Float.parseFloat(Nlat);		
+					float NYCLongitude = Float.parseFloat(Nlon);
+				
+					NYC.mapLat = NYCLatitude;
+					NYC.mapLon = NYCLongitude;
+					NYC.Temp = Navg_temp;	
+					
+					
+	                }
+	                
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        	
-	        	
-	            // startActivity(intent ); 
-	            //Prwta thn Activity me to JSON kai meta methn maps.
-	            //Mesa me to JSON tha elegxei kai internet connectivity
+		      
+		      
 	            
 	            startActivity(intentMapsExercise);
 	            
 	        }
 	    }
 	
-	
-	
-	// public  getJSONData(){
-		 
-	//	 return null;
-		 
-	// }
 	 private void setData() {
 
 	        mapArray.clear();
@@ -164,6 +209,7 @@ public class MainActivity extends ListActivity {
 	        myMnode.mapDesc = this.getResources().getString(
 	                R.string.description1);
 	        myMnode.mapImage = R.drawable.athens;
+	        myMnode.node_url = "http://zoumpis.eu/json/athens.json";
 	        
 	        // Athens	        
 	        mapArray.add(myMnode);
@@ -174,6 +220,7 @@ public class MainActivity extends ListActivity {
 	        mynode2.mapDesc = this.getResources().getString(
 	                R.string.description2);
 	        mynode2.mapImage = R.drawable.madrid;
+	        mynode2.node_url="http://zoumpis.eu/json/madrid.json";
 	        // Madrid
         
 	        mapArray.add(mynode2);
@@ -184,6 +231,7 @@ public class MainActivity extends ListActivity {
 	        mynode3.mapDesc = this.getResources().getString(
 	                R.string.description3);
 	        mynode3.mapImage = R.drawable.nyc;
+	        mynode3.node_url= "http://zoumpis.eu/json/nyc.json";
 	        // New York
 
 	        mapArray.add(mynode3);
