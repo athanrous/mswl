@@ -10,6 +10,7 @@ public class MapNode implements Parcelable{
     public String mapDesc;
     public Integer mapImage;
     public Integer Temp;
+    public String node_url;
     public double mapLat;
     public double mapLon;
     
@@ -46,6 +47,7 @@ public class MapNode implements Parcelable{
 		mDest.writeDouble(mapLat);
 		mDest.writeDouble(mapLon);
 		mDest.writeInt(Temp);
+		mDest.writeString(node_url);
 	}
 	
 	public MapNode(Parcel mPar){
@@ -56,6 +58,7 @@ public class MapNode implements Parcelable{
         mapLat = mPar.readDouble();
         mapLon = mPar.readDouble();
         Temp = mPar.readInt();
+        node_url = mPar.readString();
 
 	
 	}

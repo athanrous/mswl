@@ -46,6 +46,7 @@ public final class R {
         public static final int jsonparse=0x7f070000;
         public static final int main=0x7f070001;
         public static final int maps_ext=0x7f070002;
+        public static final int parse=0x7f070003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -62,6 +63,7 @@ public final class R {
         public static final int title3=0x7f05000b;
         public static final int title_activity_jsonparse=0x7f05000d;
         public static final int title_activity_maps_ext=0x7f050005;
+        public static final int title_activity_parse=0x7f05000e;
     }
     public static final class style {
         /** 

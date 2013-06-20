@@ -3,6 +3,7 @@ package com.example.exercise_05;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
@@ -22,12 +23,34 @@ import android.widget.Toast;
 
 import com.example.exercise_04.R;
 import com.example.exercise_05.MapNode;
-//import com.example.exercise_05.JSONParser;
+import com.example.exercise_05.JSONParser;
 
 public class MainActivity extends ListActivity {
 	
 
 	private MyAdapter mAdapter = null;
+	
+	public static final String TAG_CONTACTS = "contacts";
+	public static final String TAG_COORDINATES = "coord";
+	public static final String TAG_LATITUDE = "lat";
+	public static final String TAG_LONGITUDE = "lot";
+	public static final String TAG_SYS = "sys";	
+	public static final String TAG_COUNTRY = "country";	
+	public static final String TAG_SUNRISE = "sunrise";	
+	public static final String TAG_SUNSET  = "sunset";	
+	public static final String TAG_WEATHER = "weather";	
+	public static final String TAG_ID = "id";	
+	public static final String TAG_MAIN = "main";	
+	public static final String TAG_DESCRIPTION = "description";	
+	public static final String TAG_ICON = "icon";	
+	public static final String TAG_BASE = "base";	
+	public static final String TAG_MAIN_01 ="main_01";	
+	public static final String TAG_TEMP = "temp";	
+	public static final String TAG_HUMIDITY = "humidity";	
+	public static final String TAG_PRESSURE = "pressure";	
+	public static final String TAG_TEMP_MIN ="temp_min"; 
+	public static final String TAG_TEMP_MAX = "temp_max";
+	
 	
 	private static ArrayList<MapNode> mapArray = new ArrayList<MapNode>();
 	@Override
@@ -60,10 +83,45 @@ public class MainActivity extends ListActivity {
 	            intentMapsExercise.putExtra("node", selectedNode);
 	            
 	            MapNode ATH = mapArray.get(0); // Get the first element of the MapArray (Athens)
-	        	ATH.mapLat = 37.97945;
-	        	ATH.mapLon = 23.716221;
-	        	ATH.Temp = 10;
+	            ATH.node_url = "http://api.openweathermap.org/data/2.5/find?q=New%20York&mode=json";
+	            JSONParser ATHParser = new JSONParser();
+	            JSONObject ATHjson = ATHParser.getJSONFromUrl(ATH.node_url);
+	            
+	            try {
+					JSONObject coordObj = ATHjson.getJSONObject(TAG_COORDINATES);
+					
+					String lat_str = ATHjson.getString(TAG_LATITUDE); //We receive the value as string and transform it to Float
+					
+					float Latitude = Float.parseFloat(lat_str);
+					
+					String long_str = ATHjson.getString(TAG_LONGITUDE);
+					
+					float Longitude = Float.parseFloat(long_str);
+					
+					
+					ATH.mapLat = Latitude;
+					
+					ATH.mapLon = Longitude;
+					
+					ATH.Temp = 10;
+					
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+	            	
+	            
+		        
+		        
+	            	
+	            
+	        	
+	        	
 	        	  
+	        
 	          
 	        	MapNode MAD = mapArray.get(1); // Get the second element of the MapArray (Madrid)
 	        	MAD.mapLon = -3.70256;
@@ -90,6 +148,11 @@ public class MainActivity extends ListActivity {
 	
 	
 	
+	// public  getJSONData(){
+		 
+	//	 return null;
+		 
+	// }
 	 private void setData() {
 
 	        mapArray.clear();
@@ -102,19 +165,9 @@ public class MainActivity extends ListActivity {
 	                R.string.description1);
 	        myMnode.mapImage = R.drawable.athens;
 	        
-	        // Athens
-	     //   myMnode.mapLon = 23.716221;
-	     //   myMnode.mapLat = 37.97945;
-	        
-	        
-		
-	        
+	        // Athens	        
 	        mapArray.add(myMnode);
-	        
-	        
-	        
-
-	        
+	                
 	        MapNode mynode2 = new MapNode();
 
 	        mynode2.mapTitle = this.getResources().getString(R.string.title2);
@@ -122,9 +175,7 @@ public class MainActivity extends ListActivity {
 	                R.string.description2);
 	        mynode2.mapImage = R.drawable.madrid;
 	        // Madrid
-	        
-		
-	        
+        
 	        mapArray.add(mynode2);
 
 	        MapNode mynode3 = new MapNode();
@@ -134,9 +185,7 @@ public class MainActivity extends ListActivity {
 	                R.string.description3);
 	        mynode3.mapImage = R.drawable.nyc;
 	        // New York
-	        
-		
-	        
+
 	        mapArray.add(mynode3);
 
 	        mapArray.addAll(mapArray);
