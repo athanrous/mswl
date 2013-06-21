@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -107,6 +108,22 @@ public class MapsExtActivity extends MapActivity {
 	@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem Mitem) {
+		// TODO Auto-generated method stub
+			
+		//Due to error 'No key found for id 0' and 
+		//we were enable to launch the AppSettings activity we add this method here
+		// We add this method here in order the user be able to run the Settings menu even if in the Maps
+		
+		switch (Mitem.getItemId()) {
+		case R.id.action_settings:
+			startActivity(new Intent(this, AppSettings.class));
+			return true;
+		}
 		return false;
 	}
 

@@ -30,9 +30,11 @@ import com.example.exercise_05.AppSettings;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -75,12 +77,216 @@ public class MainActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		new MainAsyncTask().execute();
 		mAdapter = new MyAdapter(this);
-		setListAdapter(mAdapter);
+		setListAdapter(mAdapter);		
 		setData();
 		
 	}
 
+	
+	
+	
+	public class MainAsyncTask extends AsyncTask<Void, Void, Void>{
+				
+	     ProgressDialog pd_main = null;
+	         
+	     protected void onPreExecute()
+	     {
+	    	 
+	    	 conInfo = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+	         mobileConn = conInfo.getNetworkInfo(0).getState();
+	         wifiConn = conInfo.getNetworkInfo(1).getState();
+	        
+				if (mobileConn == NetworkInfo.State.CONNECTED)
+	         		connectionType = "Mobile/Data Roaming";
+	         else if (wifiConn == NetworkInfo.State.CONNECTED)
+	         		connectionType = "Wifi Connection";
+	     pd_main = ProgressDialog.show(MainActivity.this, "Network Connection Info",
+	     "The Network Connection is:" + connectionType);
+	    
+	     }
+	    
+	     protected Void doInBackground(Void... arg0) {
+	     // No interact with the UI in this method
+	    
+
+	     // Wait 3 seconds
+	     try {
+	Thread.sleep(3000);
+	} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	}
+	    
+	     return null;
+	     }
+	     protected void onPostExecute(Void unused)
+	        {
+	         pd_main.dismiss();
+	        }
+
+	    }
+	
+	public class ListAsyncTask extends AsyncTask<Void, Void, Void>{
+		
+		 String LoggedUserName = AppSettings.getUserName(getBaseContext());
+		
+		 String LoggedUserTown = AppSettings.getUserTown(getBaseContext());
+
+	     ProgressDialog pd_entry = null;
+	   
+	    
+	     protected void onPreExecute()
+	     {
+	     pd_entry = ProgressDialog.show(MainActivity.this, "User Info",
+	     "User:" + "  " + LoggedUserName + "Town:" + "  " + LoggedUserTown );
+	         
+	     MapNode ATH = mapArray.get(0); // Get the first element of the MapArray (Athens)
+         JSONArray ATHdata = null;
+ 		 ArrayList<HashMap<String, String>> ATHList = new ArrayList<HashMap<String, String>>();
+ 		
+ 		//We create an ArrayList in order to store the JSONArray and it's elements
+ 		
+ 		 JSONParser ATHParser = new JSONParser();
+         JSONObject ATHjson = ATHParser.getJSONFromUrl(ATH.node_url);
+         
+         try {
+         	
+         	ATHdata = ATHjson.getJSONArray(TAG_DATA);
+             for(int i = 0; i < ATHdata.length(); i++){
+             	 JSONObject cATH = ATHdata.getJSONObject(i);    			
+     			// Storing each json item in variable
+     			String Acity = cATH.getString(TAG_CITY);
+     			String Alat = cATH.getString(TAG_LATITUDE);
+     			String Alon = cATH.getString(TAG_LONGITUDE);
+     			String Aavg_temp = cATH.getString(TAG_AVG_TEMP);
+     			String Apopulation = cATH.getString(TAG_POPULATION);	
+				//We receive the value as string and transform it to Float
+				
+				float ATHLatitude = Float.parseFloat(Alat);		
+				float ATHLongitude = Float.parseFloat(Alon);
+			
+				ATH.mapLat = ATHLatitude;
+				ATH.mapLon = ATHLongitude;
+				ATH.Temp = Aavg_temp;	
+				
+				
+             }
+             
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			  
+        
+     	          
+     	MapNode MAD = mapArray.get(1); // Get the second element of the MapArray (Madrid)
+     	
+     	 JSONArray MADdata = null;
+	    	 ArrayList<HashMap<String, String>> MADList = new ArrayList<HashMap<String, String>>();
+	    	 
+	    	//We create an ArrayList in order to store the JSONArray and it's elements
+	    		
+	    	JSONParser MADParser = new JSONParser();
+	        JSONObject MADjson = MADParser.getJSONFromUrl(MAD.node_url);
+     	
+	        try {
+         	
+         	MADdata = MADjson.getJSONArray(TAG_DATA);
+             for(int i = 0; i < MADdata.length(); i++){
+             	 JSONObject cMAD = MADdata.getJSONObject(i);    			
+     			// Storing each json item in variable
+     			String Mcity = cMAD.getString(TAG_CITY);
+     			String Mlat = cMAD.getString(TAG_LATITUDE);
+     			String Mlon = cMAD.getString(TAG_LONGITUDE);
+     			String Mavg_temp = cMAD.getString(TAG_AVG_TEMP);
+     			String Mpopulation = cMAD.getString(TAG_POPULATION);
+     			
+				
+				//We receive the value as string and transform it to Float
+				
+				float MADLatitude = Float.parseFloat(Mlat);		
+				float MADLongitude = Float.parseFloat(Mlon);
+			
+				MAD.mapLat = MADLatitude;
+				MAD.mapLon = MADLongitude;
+				MAD.Temp = Mavg_temp;	
+				
+				
+             }
+             
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+     	
+
+     	
+     	MapNode NYC = mapArray.get(2); // Get the third element of the MapArray (New York)
+     	
+     	JSONArray NYCdata = null;
+	    	ArrayList<HashMap<String, String>> NYCList = new ArrayList<HashMap<String, String>>();
+     	
+	    	//We create an ArrayList in order to store the JSONArray and it's elements
+ 		
+	    	JSONParser NYCParser = new JSONParser();
+	        JSONObject NYCjson = NYCParser.getJSONFromUrl(NYC.node_url);
+	        
+	        try {
+         	
+         	NYCdata = NYCjson.getJSONArray(TAG_DATA);
+             for(int i = 0; i < NYCdata.length(); i++){
+             	 JSONObject cNYC = NYCdata.getJSONObject(i);    			
+     			// Storing each json item in variable
+     			String Ncity = cNYC.getString(TAG_CITY);
+     			String Nlat = cNYC.getString(TAG_LATITUDE);
+     			String Nlon = cNYC.getString(TAG_LONGITUDE);
+     			String Navg_temp = cNYC.getString(TAG_AVG_TEMP);
+     			String Npopulation = cNYC.getString(TAG_POPULATION);
+     			
+				
+				//We receive the value as string and transform it to Float
+				
+				float NYCLatitude = Float.parseFloat(Nlat);		
+				float NYCLongitude = Float.parseFloat(Nlon);
+			
+				NYC.mapLat = NYCLatitude;
+				NYC.mapLon = NYCLongitude;
+				NYC.Temp = Navg_temp;	
+				
+				
+             }
+             
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+     	     
+	     
+	     }
+	    
+	     protected Void doInBackground(Void... arg0) {
+	     // No interact with the UI in this method
+	    
+
+	     // Wait for 5 seconds
+	     try {
+	Thread.sleep(5000);
+	} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	}
+	    
+	     return null;
+	     }
+	     protected void onPostExecute(Void unused)
+	        {
+	         pd_entry.dismiss();
+	        }
+
+	    }
+	
 	 protected void onListItemClick(ListView l, View v, int pos, long id) {
 
 	        boolean spam = ((pos + 1) % 3 == 0);
@@ -95,213 +301,18 @@ public class MainActivity extends ListActivity {
 
 	            pos = pos - ((pos + 1) / 3);
 	            
-	            //Here we get information about the type of connection
 	            
-	            conInfo = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-	            mobileConn = conInfo.getNetworkInfo(0).getState();
-	            wifiConn = conInfo.getNetworkInfo(1).getState();
-	           
-				if (mobileConn == NetworkInfo.State.CONNECTED)
-	            		connectionType = "Mobile/Data Roaming";
-	            else if (wifiConn == NetworkInfo.State.CONNECTED)
-	            		connectionType = "Wifi Connection";
-				
-				System.out.println(connectionType);
-				
-				String LoggedUserName = AppSettings.getUserName(getBaseContext());
-				
-				String LoggedUserTown = AppSettings.getUserTown(getBaseContext());
-				
-				System.out.println(LoggedUserName);
-				
-				System.out.println(LoggedUserTown);
-				
-
+	            new ListAsyncTask().execute();
 	            MapNode selectedNode = mapArray.get(pos);
 	            Intent intentMapsExercise = new Intent(MainActivity.this,
 	                    MapsExtActivity.class);
 	            intentMapsExercise.putExtra("node", selectedNode);
-	            
-	            MapNode ATH = mapArray.get(0); // Get the first element of the MapArray (Athens)
-	            JSONArray ATHdata = null;
-	    		ArrayList<HashMap<String, String>> ATHList = new ArrayList<HashMap<String, String>>();
-	    		
-	    		//We create an ArrayList in order to store the JSONArray and it's elements
-	    		
-	    		JSONParser ATHParser = new JSONParser();
-	            JSONObject ATHjson = ATHParser.getJSONFromUrl(ATH.node_url);
-	            
-	            try {
-	            	
-	            	ATHdata = ATHjson.getJSONArray(TAG_DATA);
-	                for(int i = 0; i < ATHdata.length(); i++){
-	                	 JSONObject cATH = ATHdata.getJSONObject(i);    			
-	        			// Storing each json item in variable
-	        			String Acity = cATH.getString(TAG_CITY);
-	        			String Alat = cATH.getString(TAG_LATITUDE);
-	        			String Alon = cATH.getString(TAG_LONGITUDE);
-	        			String Aavg_temp = cATH.getString(TAG_AVG_TEMP);
-	        			String Apopulation = cATH.getString(TAG_POPULATION);	
-					//We receive the value as string and transform it to Float
-					
-					float ATHLatitude = Float.parseFloat(Alat);		
-					float ATHLongitude = Float.parseFloat(Alon);
-				
-					ATH.mapLat = ATHLatitude;
-					ATH.mapLon = ATHLongitude;
-					ATH.Temp = Aavg_temp;	
-					
-					
-	                }
-	                
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				  
-	           
-	        	          
-	        	MapNode MAD = mapArray.get(1); // Get the second element of the MapArray (Madrid)
-	        	
-	        	 JSONArray MADdata = null;
-		    	 ArrayList<HashMap<String, String>> MADList = new ArrayList<HashMap<String, String>>();
-		    	 
-		    	//We create an ArrayList in order to store the JSONArray and it's elements
-		    		
-		    	JSONParser MADParser = new JSONParser();
-		        JSONObject MADjson = MADParser.getJSONFromUrl(MAD.node_url);
-	        	
-		        try {
-	            	
-	            	MADdata = MADjson.getJSONArray(TAG_DATA);
-	                for(int i = 0; i < MADdata.length(); i++){
-	                	 JSONObject cMAD = MADdata.getJSONObject(i);    			
-	        			// Storing each json item in variable
-	        			String Mcity = cMAD.getString(TAG_CITY);
-	        			String Mlat = cMAD.getString(TAG_LATITUDE);
-	        			String Mlon = cMAD.getString(TAG_LONGITUDE);
-	        			String Mavg_temp = cMAD.getString(TAG_AVG_TEMP);
-	        			String Mpopulation = cMAD.getString(TAG_POPULATION);
-	        			
-					
-					//We receive the value as string and transform it to Float
-					
-					float MADLatitude = Float.parseFloat(Mlat);		
-					float MADLongitude = Float.parseFloat(Mlon);
-				
-					MAD.mapLat = MADLatitude;
-					MAD.mapLon = MADLongitude;
-					MAD.Temp = Mavg_temp;	
-					
-					
-	                }
-	                
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        	
-	
-	        	
-	        	MapNode NYC = mapArray.get(2); // Get the third element of the MapArray (New York)
-	        	
-	        	JSONArray NYCdata = null;
-		    	ArrayList<HashMap<String, String>> NYCList = new ArrayList<HashMap<String, String>>();
-	        	
-		    	//We create an ArrayList in order to store the JSONArray and it's elements
-	    		
-		    	JSONParser NYCParser = new JSONParser();
-		        JSONObject NYCjson = NYCParser.getJSONFromUrl(NYC.node_url);
-		        
-		        try {
-	            	
-	            	NYCdata = NYCjson.getJSONArray(TAG_DATA);
-	                for(int i = 0; i < NYCdata.length(); i++){
-	                	 JSONObject cNYC = NYCdata.getJSONObject(i);    			
-	        			// Storing each json item in variable
-	        			String Ncity = cNYC.getString(TAG_CITY);
-	        			String Nlat = cNYC.getString(TAG_LATITUDE);
-	        			String Nlon = cNYC.getString(TAG_LONGITUDE);
-	        			String Navg_temp = cNYC.getString(TAG_AVG_TEMP);
-	        			String Npopulation = cNYC.getString(TAG_POPULATION);
-	        			
-					
-					//We receive the value as string and transform it to Float
-					
-					float NYCLatitude = Float.parseFloat(Nlat);		
-					float NYCLongitude = Float.parseFloat(Nlon);
-				
-					NYC.mapLat = NYCLatitude;
-					NYC.mapLon = NYCLongitude;
-					NYC.Temp = Navg_temp;	
-					
-					
-	                }
-	                
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        	
-		      
-		      
-	            
+	            	            
 	            startActivity(intentMapsExercise);
 	            
 	        }
-	    }
-	
-	/* public void  saveJson(String urlGet,File file_out,String file_name){
+	    } 
 		 
-		 //This function only works properly in the emulator. Do not try it at your device
-		 
-		 
-		try{
-			
-			HttpParams params = new BasicHttpParams();
-	        HttpConnectionParams.setConnectionTimeout(params, 10000);
-	        HttpConnectionParams.setSoTimeout(params, 10000);
-	        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-	        HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-	        HttpProtocolParams.setUseExpectContinue(params, true);
-	        // defaultHttpClient
-	        DefaultHttpClient httpClient = new DefaultHttpClient(params);
-	        HttpGet httpPost = new HttpGet(urlGet);
-	        HttpResponse httpResponse = httpClient.execute(httpPost);
-	        HttpEntity httpEntity = httpResponse.getEntity();
-	        builder = new StringBuilder();
-	    	InputStream content = httpEntity.getContent();
-	    	BufferedReader reader = new BufferedReader(new InputStreamReader(content));
-	    	
-	    	while ((line = reader.readLine()) != null) {
-	    		
-	    	builder.append(line);
-	    	}
-	    	
-	    	
-	    	
-	    }catch(Exception e) {
-	        System.out.println("Error no file found");
-	    }
-	    try{
-	    	
-	    	String myJSONString;
-	    	myJSONString = builder.toString();
-	    	
-	    	
-	    	//File newfile = new File(this.getFilesDir() + "/data/files/", "media.json");
-	    	FileOutputStream fos = openFileOutput(file_name, Context.MODE_APPEND);
-	    	fos.write(myJSONString.getBytes());
-	    	fos.close();	
-	    	String test = file_out.getPath();
-	    	System.out.println("This is the path:" + "" + test);
-	        
-	        System.out.println("Everything is going fine");
-	        }catch(IOException ioe){
-	        }   
-
-	 } */
-	 
 	 private void setData() {
 
 	        mapArray.clear();
