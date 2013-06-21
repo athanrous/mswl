@@ -40,13 +40,17 @@ public class JSONParser {
 		        HttpParams params = new BasicHttpParams();
 		        HttpConnectionParams.setConnectionTimeout(params, 10000);
 		        HttpConnectionParams.setSoTimeout(params, 10000);
+		        
 		        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
 		        HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
 		        HttpProtocolParams.setUseExpectContinue(params, true);
-		        // defaultHttpClient
+		       
 		        DefaultHttpClient httpClient = new DefaultHttpClient(params);
+		        
 		        HttpGet httpPost = new HttpGet(url);
-		        HttpResponse httpResponse = httpClient.execute( httpPost);
+		        
+		        HttpResponse httpResponse = httpClient.execute(httpPost);
+		        
 		        HttpEntity httpEntity = httpResponse.getEntity();
 		        is = httpEntity.getContent();           
 		    } catch (UnsupportedEncodingException ee) {
@@ -60,20 +64,20 @@ public class JSONParser {
 		    try {
 		        BufferedReader reader = new BufferedReader(new InputStreamReader(
 		                is, "utf-8"), 8); //We remove the old charset iso-8859-1 and define utf-8
-		        StringBuilder sb = new StringBuilder();
+		        StringBuilder stBuilder = new StringBuilder();
 		        String line = null;
 		        while ((line = reader.readLine()) != null) {
-		            sb.append(line + "\n");
+		            stBuilder.append(line + "\n");
 		        }
 		        is.close();
 		        reader.close();
-		        json = sb.toString();
+		        json = stBuilder.toString();
 		        Log.i("StringBuilder...", json);
-		       // System.out.println
+		       
 		    } catch (Exception e) {
 		        Log.e("Buffer Error", "Error converting result " + e.toString());
 		    }
-		    // try parse the string to a JSON object
+		    // try parse the string to a JSON object . Exceptions add from similar case [stackoverflow]
 		    try {
 		        jObj = new JSONObject(json);
 		    } catch (Exception e) {
@@ -104,10 +108,8 @@ public class JSONParser {
 		        }
 		    }
 
-		    // return JSON String
+		    // return JSON Object so as to handle it afterwards
 		    return jObj;
-
-			
 			
 			
 		}

@@ -33,18 +33,6 @@
             android:name="com.example.exercise_05.MapsExtActivity"
             android:label="@string/title_activity_maps_ext" >
         </activity>
-       <!--   <activity
-            android:name="com.example.exercise_04.JSONParseActivity"
-            android:label="@string/title_activity_jsonparse" >
-        </activity>
-        <activity
-            android:name="com.example.exercise_05.ParseActivity"
-            android:label="@string/title_activity_parse" >
-        </activity> 
-        <activity
-            android:name="com.example.exercise_04.Settings"
-            android:label="@string/title_activity_settings" >
-        </activity> -->
         <activity
             android:name="com.example.exercise_05.AppSettings"
             android:label="@string/title_activity_app_settings" >

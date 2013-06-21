@@ -111,9 +111,9 @@ public class MainActivity extends ListActivity {
 	     // No interact with the UI in this method
 	    
 
-	     // Wait 3 seconds
+	     // Wait 5 seconds
 	     try {
-	Thread.sleep(3000);
+	Thread.sleep(5000);
 	} catch (InterruptedException e) {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
@@ -140,7 +140,7 @@ public class MainActivity extends ListActivity {
 	     protected void onPreExecute()
 	     {
 	     pd_entry = ProgressDialog.show(MainActivity.this, "User Info",
-	     "User:" + "  " + LoggedUserName + "Town:" + "  " + LoggedUserTown );
+	     "User: " + "  " + LoggedUserName + "\n" +  "Town: " + "  " + LoggedUserTown );
 	         
 	     MapNode ATH = mapArray.get(0); // Get the first element of the MapArray (Athens)
          JSONArray ATHdata = null;

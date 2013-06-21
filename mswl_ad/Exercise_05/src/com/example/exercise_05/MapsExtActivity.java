@@ -87,11 +87,10 @@ public class MapsExtActivity extends MapActivity {
 
 	        mapView.setClickable(true);
 
-	        // Edw prepei na kanw allages
-	        textViewLocation.setText("Location:"
+	        textViewLocation.setText("Location: "
 	                + String.valueOf(mGeoPoint.getLatitudeE6()) + " , "
-	                + String.valueOf(mGeoPoint.getLongitudeE6()) + " "
-	                + "Temprature:"
+	                + String.valueOf(mGeoPoint.getLongitudeE6()) + "\n "
+	                + "Temprature: " + " "
 	                + mNodeMap.Temp + ""
 	                
 	        		);
