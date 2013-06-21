@@ -25,14 +25,17 @@ import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.example.exercise_05.AppSettings;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -105,11 +108,14 @@ public class MainActivity extends ListActivity {
 				
 				System.out.println(connectionType);
 				
-			//	File fileNYC = new File("/data/files/file_nyc.json");
-			//	String file_NYC_name = "nyc.json";
+				String LoggedUserName = AppSettings.getUserName(getBaseContext());
 				
-			//	String NYC_url =  "http://www.zoumpis.eu/json/nyc.json";
-			//	saveJson(NYC_url,fileNYC,file_NYC_name);
+				String LoggedUserTown = AppSettings.getUserTown(getBaseContext());
+				
+				System.out.println(LoggedUserName);
+				
+				System.out.println(LoggedUserTown);
+				
 
 	            MapNode selectedNode = mapArray.get(pos);
 	            Intent intentMapsExercise = new Intent(MainActivity.this,
@@ -417,6 +423,20 @@ public class MainActivity extends ListActivity {
 	}
 	
 	
-
+	@Override
+	public boolean onOptionsItemSelected(MenuItem Mitem) {
+		// TODO Auto-generated method stub
+			
+		//Due to error 'No key found for id 0' and 
+		//we were enable to launch the AppSettings activity we add this method here
+		
+		
+		switch (Mitem.getItemId()) {
+		case R.id.action_settings:
+			startActivity(new Intent(this, AppSettings.class));
+			return true;
+		}
+		return false;
+	}
 
 }
