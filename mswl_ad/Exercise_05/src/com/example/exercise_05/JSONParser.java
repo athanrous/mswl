@@ -45,7 +45,7 @@ public class JSONParser {
 		        HttpProtocolParams.setUseExpectContinue(params, true);
 		        // defaultHttpClient
 		        DefaultHttpClient httpClient = new DefaultHttpClient(params);
-		        HttpGet httpPost = new HttpGet( url);
+		        HttpGet httpPost = new HttpGet(url);
 		        HttpResponse httpResponse = httpClient.execute( httpPost);
 		        HttpEntity httpEntity = httpResponse.getEntity();
 		        is = httpEntity.getContent();           
@@ -69,6 +69,7 @@ public class JSONParser {
 		        reader.close();
 		        json = sb.toString();
 		        Log.i("StringBuilder...", json);
+		       // System.out.println
 		    } catch (Exception e) {
 		        Log.e("Buffer Error", "Error converting result " + e.toString());
 		    }

@@ -1,8 +1,27 @@
 package com.example.exercise_05;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,6 +63,8 @@ public class MainActivity extends ListActivity {
 	public ConnectivityManager conInfo;
 	public State mobileConn;
 	public State wifiConn;
+	public String line;
+	public StringBuilder builder;
 	
 	private static ArrayList<MapNode> mapArray = new ArrayList<MapNode>();
 	@Override
@@ -82,6 +103,12 @@ public class MainActivity extends ListActivity {
 	            		connectionType = "Wifi Connection";
 				
 				System.out.println(connectionType);
+				
+			//	File fileNYC = new File("/data/files/file_nyc.json");
+			//	String file_NYC_name = "nyc.json";
+				
+			//	String NYC_url =  "http://www.zoumpis.eu/json/nyc.json";
+			//	saveJson(NYC_url,fileNYC,file_NYC_name);
 
 	            MapNode selectedNode = mapArray.get(pos);
 	            Intent intentMapsExercise = new Intent(MainActivity.this,
@@ -217,6 +244,57 @@ public class MainActivity extends ListActivity {
 	        }
 	    }
 	
+	/* public void  saveJson(String urlGet,File file_out,String file_name){
+		 
+		 //This function only works properly in the emulator. Do not try it at your device
+		 
+		 
+		try{
+			
+			HttpParams params = new BasicHttpParams();
+	        HttpConnectionParams.setConnectionTimeout(params, 10000);
+	        HttpConnectionParams.setSoTimeout(params, 10000);
+	        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+	        HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+	        HttpProtocolParams.setUseExpectContinue(params, true);
+	        // defaultHttpClient
+	        DefaultHttpClient httpClient = new DefaultHttpClient(params);
+	        HttpGet httpPost = new HttpGet(urlGet);
+	        HttpResponse httpResponse = httpClient.execute(httpPost);
+	        HttpEntity httpEntity = httpResponse.getEntity();
+	        builder = new StringBuilder();
+	    	InputStream content = httpEntity.getContent();
+	    	BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+	    	
+	    	while ((line = reader.readLine()) != null) {
+	    		
+	    	builder.append(line);
+	    	}
+	    	
+	    	
+	    	
+	    }catch(Exception e) {
+	        System.out.println("Error no file found");
+	    }
+	    try{
+	    	
+	    	String myJSONString;
+	    	myJSONString = builder.toString();
+	    	
+	    	
+	    	//File newfile = new File(this.getFilesDir() + "/data/files/", "media.json");
+	    	FileOutputStream fos = openFileOutput(file_name, Context.MODE_APPEND);
+	    	fos.write(myJSONString.getBytes());
+	    	fos.close();	
+	    	String test = file_out.getPath();
+	    	System.out.println("This is the path:" + "" + test);
+	        
+	        System.out.println("Everything is going fine");
+	        }catch(IOException ioe){
+	        }   
+
+	 } */
+	 
 	 private void setData() {
 
 	        mapArray.clear();
