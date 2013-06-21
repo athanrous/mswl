@@ -113,7 +113,7 @@ public class MainActivity extends ListActivity {
 
 	     // Wait 5 seconds
 	     try {
-	Thread.sleep(5000);
+	Thread.sleep(15000);
 	} catch (InterruptedException e) {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
@@ -272,7 +272,7 @@ public class MainActivity extends ListActivity {
 
 	     // Wait for 5 seconds
 	     try {
-	Thread.sleep(5000);
+	Thread.sleep(15000);
 	} catch (InterruptedException e) {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
