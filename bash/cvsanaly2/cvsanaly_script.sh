@@ -24,6 +24,8 @@
 
 #python db_cvsanaly.py
 gits=`cat repositories`
+reps=`cat rep`
+echo $reps
 mkdir repos
 cd repos
 for clone in $gits
@@ -33,8 +35,9 @@ for clone in $gits
 
 dirs=`ls`
 echo $dirs
-for dir in $dirs 
-  
+
+for dir in $dirs and name in $reps
   do  
-  cvsanaly2 --db-user root --db-password root --db-database Tesis $dir
+  cvsanaly2 --db-user root --db-password root --db-database $names $dir
   done
+  
